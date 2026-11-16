@@ -42,6 +42,11 @@ let selectedRoom = "f1-kitchen";
 
 const roomPanel = document.querySelector("#room-panel");
 const toast = document.querySelector("#toast");
+const demoGate = document.querySelector("#demo-gate");
+const pinForm = document.querySelector("#pin-form");
+const pinInput = document.querySelector("#pin-input");
+const pinMessage = document.querySelector("#pin-message");
+const DEMO_PIN = "[removed]";
 
 function save() { localStorage.setItem("home-dashboard-demo", JSON.stringify(state)); }
 function isOn(id) { return Boolean(state.devices[id]); }
@@ -119,6 +124,25 @@ document.addEventListener("click", event => {
   const scene = event.target.closest("[data-scene]"); if (scene) { runScene(scene.dataset.scene); return; }
   if (event.target.closest("#theme-toggle")) { document.body.classList.toggle("high-contrast"); }
 });
+
+pinInput.addEventListener("input", () => {
+  pinInput.value = pinInput.value.replace(/\D/g, "").slice(0, 4);
+  pinMessage.textContent = "";
+});
+
+pinForm.addEventListener("submit", event => {
+  event.preventDefault();
+  if (pinInput.value === DEMO_PIN) {
+    sessionStorage.setItem("home-dashboard-demo-access", "granted");
+    demoGate.classList.add("unlocked");
+    showToast("Демо-панель открыта");
+  } else {
+    pinMessage.textContent = "Неверный код. Попробуйте ещё раз.";
+    pinInput.select();
+  }
+});
+
+if (sessionStorage.getItem("home-dashboard-demo-access") === "granted") demoGate.classList.add("unlocked");
 
 if ("serviceWorker" in navigator) navigator.serviceWorker.register("./service-worker.js").catch(() => {});
 render();

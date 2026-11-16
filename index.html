@@ -10,6 +10,21 @@
     <title>Мой дом</title>
   </head>
   <body>
+    <section class="demo-gate" id="demo-gate" aria-labelledby="gate-title">
+      <div class="gate-card">
+        <div class="gate-mark" aria-hidden="true">⌂</div>
+        <p class="eyebrow">ЛИЧНАЯ ПАНЕЛЬ</p>
+        <h1 id="gate-title">Мой дом</h1>
+        <p>Введите четырёхзначный код, чтобы открыть демо-панель.</p>
+        <form id="pin-form" novalidate>
+          <label class="sr-only" for="pin-input">Код доступа</label>
+          <input id="pin-input" inputmode="numeric" autocomplete="one-time-code" maxlength="4" pattern="[0-9]{4}" placeholder="• • • •" aria-describedby="pin-message" />
+          <button type="submit">Открыть панель <span>→</span></button>
+          <p class="pin-message" id="pin-message" aria-live="polite"></p>
+        </form>
+        <small>Временный режим для проверки интерфейса</small>
+      </div>
+    </section>
     <div class="app-shell">
       <aside class="sidebar" aria-label="Навигация">
         <a class="brand" href="#top" aria-label="Мой дом, главная">
