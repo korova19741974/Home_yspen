@@ -1,148 +1,36 @@
 const rooms = {
-  "f1-office": { title: "Кабинет", floor: "1 этаж", devices: [
-    { id: "f1-office-light", icon: "☀", name: "Основной свет", kind: "light" },
-    { id: "f1-office-alice", icon: "♫", name: "Алиса Мини с часами", kind: "speaker" }
-  ]},
-  "f1-entry": { title: "Предбанник", floor: "1 этаж", devices: [
-    { id: "f1-entry-light", icon: "☀", name: "Свет предбанника", kind: "light" }
-  ]},
-  "f1-hall": { title: "Коридор", floor: "1 этаж", devices: [
-    { id: "f1-hall-light-a", icon: "☀", name: "Основной свет 1", kind: "light" },
-    { id: "f1-hall-light-b", icon: "☀", name: "Основной свет 2", kind: "light" },
-    { id: "f1-street-light", icon: "◉", name: "Свет улицы", kind: "light" }
-  ]},
-  "f1-kitchen": { title: "Кухня", floor: "1 этаж · Rooms 3–4", devices: [
-    { id: "f1-kitchen-light", icon: "☀", name: "Основной свет", kind: "light" },
-    { id: "f1-plug-1", icon: "⌁", name: "Умная розетка 1", kind: "plug" },
-    { id: "f1-plug-2", icon: "⌁", name: "Умная розетка 2", kind: "plug" },
-    { id: "vacuum-1", icon: "✦", name: "Xiaomi M40", kind: "vacuum" },
-    { id: "f1-alice", icon: "♫", name: "Алиса Мини", kind: "speaker" }
-  ]},
-  "f1-toilet": { title: "Туалет", floor: "1 этаж", devices: [{ id: "f1-toilet-light", icon: "☀", name: "Свет", kind: "light" }]},
-  "f1-terrace": { title: "Терраса", floor: "1 этаж", devices: [{ id: "f1-terrace-light", icon: "☀", name: "Свет террасы", kind: "light" }]},
-  "f2-stairs": { title: "Лестница", floor: "2 этаж", devices: [{ id: "f2-stairs-light", icon: "☀", name: "Свет лестницы", kind: "light" }]},
-  "f2-guest": { title: "Гостевая спальня", floor: "2 этаж", devices: [
-    { id: "f2-guest-main", icon: "☀", name: "Основной свет", kind: "light" }, { id: "f2-guest-wardrobe", icon: "◉", name: "Гардероб", kind: "light" }
-  ]},
-  "f2-bath": { title: "Ванная", floor: "2 этаж", devices: [
-    { id: "f2-bath-main", icon: "☀", name: "Основной свет", kind: "light" }, { id: "f2-bath-mirror", icon: "◉", name: "Зеркало", kind: "light" }, { id: "f2-leak", icon: "◈", name: "Датчик протечки", kind: "sensor" }
-  ]},
-  "f2-office": { title: "Кабинет", floor: "2 этаж", devices: [
-    { id: "f2-office-light", icon: "☀", name: "Свет", kind: "light" }, { id: "vacuum-2", icon: "✦", name: "Xiaomi M40", kind: "vacuum" }, { id: "f2-temperature", icon: "⌁", name: "Температура · 22.8°", kind: "sensor" }
-  ]},
-  "f2-bedroom": { title: "Спальня", floor: "2 этаж", devices: [
-    { id: "f2-bedroom-main", icon: "☀", name: "Основной свет", kind: "light" }, { id: "f2-bed-lamp-1", icon: "◉", name: "Лампа у кровати 1", kind: "light" }, { id: "f2-bed-lamp-2", icon: "◉", name: "Лампа у кровати 2", kind: "light" }, { id: "f2-alice-max", icon: "♫", name: "Алиса Макс", kind: "speaker" }
-  ]}
+  "f1-office": { title: "Кабинет", floor: "1 этаж · Room 1", view: "35 55 245 245", devices: [{ id: "f1-office-light", icon: "☀", name: "Основной свет", kind: "light" }, { id: "f1-office-alice", icon: "♫", name: "Алиса Мини с часами", kind: "speaker" }] },
+  "f1-entry": { title: "Предбанник", floor: "1 этаж · Room 5", view: "235 30 205 205", devices: [{ id: "f1-entry-light", icon: "☀", name: "Свет предбанника", kind: "light" }] },
+  "f1-hall": { title: "Коридор", floor: "1 этаж · Room 2", view: "205 125 270 270", devices: [{ id: "f1-hall-light-a", icon: "☀", name: "Основной свет 1", kind: "light" }, { id: "f1-hall-light-b", icon: "☀", name: "Основной свет 2", kind: "light" }, { id: "f1-street-light", icon: "◉", name: "Свет улицы", kind: "light" }] },
+  "f1-kitchen": { title: "Кухня", floor: "1 этаж · Rooms 3–4", view: "65 115 590 345", devices: [{ id: "f1-kitchen-light", icon: "☀", name: "Основной свет", kind: "light" }, { id: "f1-plug-1", icon: "⌁", name: "Умная розетка 1", kind: "plug" }, { id: "f1-plug-2", icon: "⌁", name: "Умная розетка 2", kind: "plug" }, { id: "vacuum-1", icon: "✦", name: "Xiaomi M40", kind: "vacuum" }, { id: "f1-alice", icon: "♫", name: "Алиса Мини", kind: "speaker" }, { id: "f1-kitchen-camera", icon: "▣", name: "Камера кухни", kind: "camera" }] },
+  "f1-toilet": { title: "Туалет", floor: "1 этаж", view: "550 250 150 205", devices: [{ id: "f1-toilet-light", icon: "☀", name: "Свет", kind: "light" }] },
+  "f1-terrace": { title: "Терраса", floor: "1 этаж", view: "330 315 275 165", devices: [{ id: "f1-terrace-light", icon: "☀", name: "Свет террасы", kind: "light" }] },
+  "f2-stairs": { title: "Лестница", floor: "2 этаж · включая Room 1", view: "225 55 215 300", devices: [{ id: "f2-stairs-light", icon: "☀", name: "Свет лестницы", kind: "light" }] },
+  "f2-guest": { title: "Гостевая спальня", floor: "2 этаж · Room 2", view: "40 75 260 225", devices: [{ id: "f2-guest-main", icon: "☀", name: "Основной свет", kind: "light" }, { id: "f2-guest-wardrobe", icon: "◉", name: "Гардероб", kind: "light" }] },
+  "f2-bath": { title: "Ванная", floor: "2 этаж · Room 6", view: "395 95 285 245", devices: [{ id: "f2-bath-main", icon: "☀", name: "Основной свет", kind: "light" }, { id: "f2-bath-mirror", icon: "◉", name: "Зеркало", kind: "light" }, { id: "f2-leak", icon: "◈", name: "Датчик протечки", kind: "sensor" }] },
+  "f2-office": { title: "Кабинет", floor: "2 этаж · Room 4", view: "45 270 295 220", devices: [{ id: "f2-office-light", icon: "☀", name: "Свет", kind: "light" }, { id: "vacuum-2", icon: "✦", name: "Xiaomi M40", kind: "vacuum" }, { id: "f2-temperature", icon: "⌁", name: "Температура · 22.8°", kind: "sensor" }] },
+  "f2-bedroom": { title: "Спальня", floor: "2 этаж · Room 5", view: "300 275 380 220", devices: [{ id: "f2-bedroom-main", icon: "☀", name: "Основной свет", kind: "light" }, { id: "f2-bed-lamp-1", icon: "◉", name: "Лампа у кровати 1", kind: "light" }, { id: "f2-bed-lamp-2", icon: "◉", name: "Лампа у кровати 2", kind: "light" }, { id: "f2-alice-max", icon: "♫", name: "Алиса Макс", kind: "speaker" }] }
 };
-
-const defaults = { devices: { "f1-office-light": true, "f1-entry-light": false, "f1-hall-light-a": true, "f1-hall-light-b": true, "f1-street-light": false, "f1-kitchen-light": true, "f1-plug-1": false, "f1-plug-2": true, "f1-toilet-light": false, "f1-terrace-light": false, "f2-stairs-light": false, "f2-guest-main": false, "f2-guest-wardrobe": false, "f2-bath-main": false, "f2-bath-mirror": false, "f2-office-light": true, "f2-bedroom-main": false, "f2-bed-lamp-1": true, "f2-bed-lamp-2": true }, vacuums: { "vacuum-1": { state: "На базе", battery: 100 }, "vacuum-2": { state: "На базе", battery: 82 } } };
+const defaults = { devices: { "f1-office-light": true, "f1-entry-light": false, "f1-hall-light-a": true, "f1-hall-light-b": true, "f1-street-light": false, "f1-kitchen-light": true, "f1-plug-1": false, "f1-plug-2": true, "f1-toilet-light": false, "f1-terrace-light": false, "f2-stairs-light": false, "f2-guest-main": false, "f2-guest-wardrobe": false, "f2-bath-main": false, "f2-bath-mirror": false, "f2-office-light": true, "f2-bedroom-main": false, "f2-bed-lamp-1": true, "f2-bed-lamp-2": true }, vacuums: { "vacuum-1": { state: "На базе", battery: 100, mode: "Стандарт", route: "Вся карта" }, "vacuum-2": { state: "На базе", battery: 82, mode: "Стандарт", route: "Вся карта" } } };
 let state = JSON.parse(localStorage.getItem("home-dashboard-demo")) || structuredClone(defaults);
-let activeFloor = 1;
-let selectedRoom = "f1-kitchen";
-
-const roomPanel = document.querySelector("#room-panel");
-const toast = document.querySelector("#toast");
-const demoGate = document.querySelector("#demo-gate");
-const pinForm = document.querySelector("#pin-form");
-const pinInput = document.querySelector("#pin-input");
-const pinMessage = document.querySelector("#pin-message");
-const DEMO_PIN = "[removed]";
-
+state.devices = { ...defaults.devices, ...state.devices }; Object.keys(defaults.vacuums).forEach(id => { state.vacuums[id] = { ...defaults.vacuums[id], ...state.vacuums[id] }; });
+let activeFloor = 1; let selectedRoom = "f1-kitchen"; const FULL_VIEW = "0 0 760 520";
+const roomPanel = document.querySelector("#room-panel"), toast = document.querySelector("#toast"), demoGate = document.querySelector("#demo-gate"), pinForm = document.querySelector("#pin-form"), pinInput = document.querySelector("#pin-input"), pinMessage = document.querySelector("#pin-message"), vacuumModal = document.querySelector("#vacuum-modal"), cameraModal = document.querySelector("#camera-modal"), DEMO_PIN = "[removed]";
 function save() { localStorage.setItem("home-dashboard-demo", JSON.stringify(state)); }
 function isOn(id) { return Boolean(state.devices[id]); }
-function setDevice(id, on) { state.devices[id] = on; save(); render(); }
-function toggleDevice(id) { setDevice(id, !isOn(id)); }
 function showToast(text) { toast.textContent = text; toast.classList.add("show"); clearTimeout(showToast.timeout); showToast.timeout = setTimeout(() => toast.classList.remove("show"), 2800); }
-
-function displayVacuum(id) {
-  const vacuum = state.vacuums[id];
-  return `${vacuum.state} · ${vacuum.battery}%`;
-}
-
-function renderRoomPanel() {
-  const room = rooms[selectedRoom];
-  if (!room) { roomPanel.innerHTML = '<div class="empty-panel"><b>Выберите комнату</b>На карте появятся её устройства.</div>'; return; }
-  const items = room.devices.map(device => {
-    if (device.kind === "sensor") return `<div class="control-row"><span class="control-icon">${device.icon}</span><span class="control-copy"><strong>${device.name}</strong><small>${device.id === "f2-leak" ? "Сухо · Zigbee" : "Zigbee · данные в демо"}</small></span></div>`;
-    if (device.kind === "vacuum") return `<div class="control-row"><span class="control-icon">${device.icon}</span><span class="control-copy"><strong>${device.name}</strong><small>${displayVacuum(device.id)}</small></span><button class="device-action" data-vacuum-action="${device.id}">${state.vacuums[device.id].state === "Убирает" ? "Пауза" : "Старт"}</button></div>`;
-    if (device.kind === "speaker") return `<div class="control-row"><span class="control-icon">${device.icon}</span><span class="control-copy"><strong>${device.name}</strong><small>Яндекс Музыка · тестовый режим</small></span><button class="device-action" data-music="${device.id}">Играть</button></div>`;
-    const status = isOn(device.id) ? "Включено" : "Выключено";
-    return `<div class="control-row"><span class="control-icon">${device.icon}</span><span class="control-copy"><strong>${device.name}</strong><small>${status} · Tuya</small></span><button class="toggle ${isOn(device.id) ? "on" : ""}" data-toggle="${device.id}" aria-label="Переключить ${device.name}"><span></span></button></div>`;
-  }).join("");
-  roomPanel.innerHTML = `<p class="eyebrow">КОМНАТА</p><h3>${room.title}</h3><p>${room.floor}</p><div class="room-devices">${items}</div><div class="room-tip"><strong>Сейчас демо.</strong><br>Позже элементы подключатся к Home Assistant без изменения карты.</div>`;
-}
-
-function renderMap() {
-  document.querySelectorAll(".floor-map").forEach(map => map.classList.toggle("hidden", map.id !== `floor-${activeFloor}`));
-  document.querySelectorAll(".floor-tab").forEach(tab => { const active = Number(tab.dataset.floor) === activeFloor; tab.classList.toggle("active", active); tab.setAttribute("aria-selected", active); });
-  document.querySelector(".floor-label").textContent = `${activeFloor} этаж`;
-  document.querySelectorAll(".floor-room").forEach(element => {
-    const room = rooms[element.dataset.room];
-    const hasActive = room && room.devices.some(device => device.kind !== "sensor" && device.kind !== "vacuum" && device.kind !== "speaker" && isOn(device.id));
-    element.classList.toggle("selected", element.dataset.room === selectedRoom);
-    element.classList.toggle("room-active", hasActive);
-  });
-}
-
-function renderSummary() {
-  const count = Object.values(state.devices).filter(Boolean).length;
-  document.querySelector("#lights-count").textContent = count;
-  document.querySelector("#vacuum-1-summary").textContent = displayVacuum("vacuum-1");
-  document.querySelector("#vacuum-2-summary").textContent = displayVacuum("vacuum-2");
-}
-
+function displayVacuum(id) { const v = state.vacuums[id]; return `${v.state} · ${v.battery}%`; }
+function renderRoomPanel() { const room = rooms[selectedRoom]; const items = room.devices.map(d => { if (d.kind === "sensor") return `<div class="control-row"><span class="control-icon">${d.icon}</span><span class="control-copy"><strong>${d.name}</strong><small>${d.id === "f2-leak" ? "Сухо · Zigbee" : "Zigbee · данные в демо"}</small></span></div>`; if (d.kind === "vacuum") return `<div class="control-row"><span class="control-icon">${d.icon}</span><span class="control-copy"><strong>${d.name}</strong><small>${displayVacuum(d.id)} · ${state.vacuums[d.id].mode}</small></span><button class="device-action" data-vacuum-settings="${d.id}">Настроить</button></div>`; if (d.kind === "speaker") return `<div class="control-row"><span class="control-icon">${d.icon}</span><span class="control-copy"><strong>${d.name}</strong><small>Яндекс Музыка · тестовый режим</small></span><button class="device-action" data-music="${d.id}">Играть</button></div>`; if (d.kind === "camera") return `<div class="control-row"><span class="control-icon">${d.icon}</span><span class="control-copy"><strong>${d.name}</strong><small>Через регистратор · демо</small></span><button class="device-action" data-camera="kitchen">Открыть</button></div>`; return `<div class="control-row"><span class="control-icon">${d.icon}</span><span class="control-copy"><strong>${d.name}</strong><small>${isOn(d.id) ? "Включено" : "Выключено"} · Tuya</small></span><button class="toggle ${isOn(d.id) ? "on" : ""}" data-toggle="${d.id}" aria-label="Переключить ${d.name}"><span></span></button></div>`; }).join(""); roomPanel.innerHTML = `<p class="eyebrow">КОМНАТА · ПРИБЛИЖЕННЫЙ ПЛАН</p><h3>${room.title}</h3><p>${room.floor}</p><div class="room-devices">${items}</div><div class="room-tip"><strong>Новые устройства появятся здесь.</strong><br>Карта и комнаты уже готовы к расширению.</div>`; }
+function animateView(map, target) { const from = map.getAttribute("viewBox").trim().split(/\s+/).map(Number), to = target.trim().split(/\s+/).map(Number); cancelAnimationFrame(map.zoomFrame); const start = performance.now(); const tick = now => { const t = Math.min(1, (now - start) / 360), e = 1 - Math.pow(1 - t, 3); map.setAttribute("viewBox", from.map((v, i) => v + (to[i] - v) * e).join(" ")); if (t < 1) map.zoomFrame = requestAnimationFrame(tick); }; map.zoomFrame = requestAnimationFrame(tick); }
+function zoomToRoom(id) { animateView(document.querySelector(`#floor-${id.startsWith("f2-") ? 2 : 1}`), rooms[id].view); }
+function resetMap() { animateView(document.querySelector(`#floor-${activeFloor}`), FULL_VIEW); }
+function renderMap() { document.querySelectorAll(".floor-map").forEach(m => m.classList.toggle("hidden", m.id !== `floor-${activeFloor}`)); document.querySelectorAll(".floor-tab").forEach(t => { const a = Number(t.dataset.floor) === activeFloor; t.classList.toggle("active", a); t.setAttribute("aria-selected", a); }); document.querySelector(".floor-label").textContent = `${activeFloor} этаж`; document.querySelectorAll(".floor-room").forEach(el => { const room = rooms[el.dataset.room], active = room.devices.some(d => ["light", "plug"].includes(d.kind) && isOn(d.id)); el.classList.toggle("selected", el.dataset.room === selectedRoom); el.classList.toggle("room-active", active); }); }
+function renderSummary() { document.querySelector("#lights-count").textContent = Object.values(state.devices).filter(Boolean).length; document.querySelector("#vacuum-1-summary").textContent = displayVacuum("vacuum-1"); document.querySelector("#vacuum-2-summary").textContent = displayVacuum("vacuum-2"); }
 function render() { renderMap(); renderRoomPanel(); renderSummary(); }
-
-function setVacuum(id, action = "toggle") {
-  const vacuum = state.vacuums[id];
-  if (action === "home") vacuum.state = "Возвращается на базу";
-  else vacuum.state = vacuum.state === "Убирает" ? "На паузе" : "Убирает";
-  save(); render(); showToast(`${id === "vacuum-1" ? "Робот 1 этажа" : "Робот 2 этажа"}: ${vacuum.state.toLowerCase()}`);
-}
-
-function runScene(scene) {
-  if (scene === "night" || scene === "away") {
-    Object.keys(state.devices).forEach(id => { state.devices[id] = false; });
-    if (scene === "away") Object.values(state.vacuums).forEach(vacuum => { if (vacuum.state === "Убирает") vacuum.state = "На паузе"; });
-    showToast(scene === "night" ? "Сценарий «Спокойной ночи» запущен" : "Дом переведён в режим «Никого нет дома»");
-  } else {
-    const id = scene === "clean-first" ? "vacuum-1" : "vacuum-2";
-    state.vacuums[id].state = "Убирает";
-    showToast(`Уборка ${scene === "clean-first" ? "1" : "2"} этажа запущена`);
-  }
-  save(); render();
-}
-
-document.addEventListener("click", event => {
-  const roomElement = event.target.closest(".floor-room");
-  if (roomElement) { selectedRoom = roomElement.dataset.room; activeFloor = selectedRoom.startsWith("f2-") ? 2 : 1; render(); return; }
-  const floorTab = event.target.closest(".floor-tab");
-  if (floorTab) { activeFloor = Number(floorTab.dataset.floor); selectedRoom = activeFloor === 1 ? "f1-kitchen" : "f2-bedroom"; render(); return; }
-  const toggle = event.target.closest("[data-toggle]"); if (toggle) { toggleDevice(toggle.dataset.toggle); return; }
-  const vacuumButton = event.target.closest("[data-vacuum-action],[data-vacuum]"); if (vacuumButton) { setVacuum(vacuumButton.dataset.vacuumAction || vacuumButton.dataset.vacuum); return; }
-  const music = event.target.closest("[data-music]"); if (music) { showToast("В демо музыка не запускается. После подключения Яндекс Станции добавим плейлист."); return; }
-  const scene = event.target.closest("[data-scene]"); if (scene) { runScene(scene.dataset.scene); return; }
-  if (event.target.closest("#theme-toggle")) { document.body.classList.toggle("high-contrast"); }
-});
-
-pinInput.addEventListener("input", () => {
-  pinInput.value = pinInput.value.replace(/\D/g, "").slice(0, 4);
-  pinMessage.textContent = "";
-});
-
-pinForm.addEventListener("submit", event => {
-  event.preventDefault();
-  if (pinInput.value === DEMO_PIN) {
-    sessionStorage.setItem("home-dashboard-demo-access", "granted");
-    demoGate.classList.add("unlocked");
-    showToast("Демо-панель открыта");
-  } else {
-    pinMessage.textContent = "Неверный код. Попробуйте ещё раз.";
-    pinInput.select();
-  }
-});
-
-if (sessionStorage.getItem("home-dashboard-demo-access") === "granted") demoGate.classList.add("unlocked");
-
-if ("serviceWorker" in navigator) navigator.serviceWorker.register("./service-worker.js").catch(() => {});
-render();
+function setVacuum(id, action = "toggle") { const v = state.vacuums[id]; v.state = action === "home" ? "Возвращается на базу" : v.state === "Убирает" ? "На паузе" : "Убирает"; save(); render(); showToast(`${id === "vacuum-1" ? "Робот 1 этажа" : "Робот 2 этажа"}: ${v.state.toLowerCase()}`); }
+function openVacuumSettings(id) { const v = state.vacuums[id], name = id === "vacuum-1" ? "Xiaomi M40 · 1 этаж" : "Xiaomi M40 · 2 этаж"; vacuumModal.innerHTML = `<div class="modal-content"><div class="modal-top"><div><p class="eyebrow">НАСТРОЙКИ УБОРКИ</p><h2>${name}</h2><p>${displayVacuum(id)} · ${v.route}</p></div><button class="modal-close" data-close-modal="vacuum-modal">×</button></div><div class="setting-group"><strong>Режим мощности</strong><div class="mode-options">${["Тихий", "Стандарт", "Турбо", "Макс"].map(x => `<button class="mode-pill ${v.mode === x ? "active" : ""}" data-vacuum-mode="${x}" data-vacuum-id="${id}">${x}</button>`).join("")}</div></div><div class="setting-group"><strong>Маршрут уборки</strong><div class="mode-options">${["Вся карта", "По комнатам", "Точечная"].map(x => `<button class="mode-pill ${v.route === x ? "active" : ""}" data-vacuum-route="${x}" data-vacuum-id="${id}">${x}</button>`).join("")}</div></div><div class="modal-actions"><button class="modal-secondary" data-vacuum-home="${id}">На базу</button><button class="modal-primary" data-vacuum-start="${id}">${v.state === "Убирает" ? "Пауза" : "Начать уборку"}</button></div></div>`; vacuumModal.showModal(); }
+function openCamera(type) { const title = type === "kitchen" ? "Камера кухни" : "Камеры участка", text = type === "kitchen" ? "Камера появится после добавления регистратора в Home Assistant." : "Камеры вокруг дома будут добавлены единым подключением регистратора."; cameraModal.innerHTML = `<div class="modal-content"><div class="modal-top"><div><p class="eyebrow">ВИДЕОНАБЛЮДЕНИЕ</p><h2>${title}</h2><p>Демо-режим</p></div><button class="modal-close" data-close-modal="camera-modal">×</button></div><div class="camera-feed"><div><b>Видео появится после подключения</b>${text}</div></div><div class="room-tip"><strong>Подключение позже:</strong><br>понадобятся модель регистратора, его локальный IP и отдельная учётная запись только для просмотра.</div></div>`; cameraModal.showModal(); }
+function runScene(scene) { if (scene === "night" || scene === "away") { Object.keys(state.devices).forEach(id => state.devices[id] = false); if (scene === "away") Object.values(state.vacuums).forEach(v => { if (v.state === "Убирает") v.state = "На паузе"; }); showToast(scene === "night" ? "Сценарий «Спокойной ночи» запущен" : "Дом переведён в режим «Никого нет дома»"); } else { const id = scene === "clean-first" ? "vacuum-1" : "vacuum-2"; state.vacuums[id].state = "Убирает"; showToast(`Уборка ${scene === "clean-first" ? "1" : "2"} этажа запущена`); } save(); render(); }
+vacuumModal.addEventListener("click", e => { const mode = e.target.closest("[data-vacuum-mode]"), route = e.target.closest("[data-vacuum-route]"), home = e.target.closest("[data-vacuum-home]"), start = e.target.closest("[data-vacuum-start]"); if (mode || route) { const id = (mode || route).dataset.vacuumId; if (mode) state.vacuums[id].mode = mode.dataset.vacuumMode; else state.vacuums[id].route = route.dataset.vacuumRoute; save(); render(); vacuumModal.close(); openVacuumSettings(id); e.stopPropagation(); } else if (home || start) { const id = (home || start).dataset.vacuumHome || (home || start).dataset.vacuumStart; setVacuum(id, home ? "home" : "toggle"); vacuumModal.close(); openVacuumSettings(id); e.stopPropagation(); } });
+document.addEventListener("click", e => { const room = e.target.closest(".floor-room"); if (room) { selectedRoom = room.dataset.room; activeFloor = selectedRoom.startsWith("f2-") ? 2 : 1; render(); zoomToRoom(selectedRoom); return; } const tab = e.target.closest(".floor-tab"); if (tab) { activeFloor = Number(tab.dataset.floor); selectedRoom = activeFloor === 1 ? "f1-kitchen" : "f2-bedroom"; render(); resetMap(); return; } if (e.target.closest("#map-reset")) return resetMap(); const toggle = e.target.closest("[data-toggle]"); if (toggle) { state.devices[toggle.dataset.toggle] = !isOn(toggle.dataset.toggle); save(); return render(); } const settings = e.target.closest("[data-vacuum-settings],[data-vacuum]"); if (settings) return openVacuumSettings(settings.dataset.vacuumSettings || settings.dataset.vacuum); const music = e.target.closest("[data-music]"); if (music) return showToast("После подключения Яндекс Станции здесь появится выбор музыки."); const camera = e.target.closest("[data-camera]"); if (camera) return openCamera(camera.dataset.camera); const mode = e.target.closest("[data-vacuum-mode]"); if (mode) { state.vacuums[mode.dataset.vacuumId].mode = mode.dataset.vacuumMode; save(); render(); return openVacuumSettings(mode.dataset.vacuumId); } const route = e.target.closest("[data-vacuum-route]"); if (route) { state.vacuums[route.dataset.vacuumId].route = route.dataset.vacuumRoute; save(); render(); return openVacuumSettings(route.dataset.vacuumId); } const home = e.target.closest("[data-vacuum-home]"); if (home) { setVacuum(home.dataset.vacuumHome, "home"); return openVacuumSettings(home.dataset.vacuumHome); } const start = e.target.closest("[data-vacuum-start]"); if (start) { setVacuum(start.dataset.vacuumStart); return openVacuumSettings(start.dataset.vacuumStart); } const close = e.target.closest("[data-close-modal]"); if (close) return document.querySelector(`#${close.dataset.closeModal}`).close(); const scene = e.target.closest("[data-scene]"); if (scene) runScene(scene.dataset.scene); });
+pinInput.addEventListener("input", () => { pinInput.value = pinInput.value.replace(/\D/g, "").slice(0, 4); pinMessage.textContent = ""; }); pinForm.addEventListener("submit", e => { e.preventDefault(); if (pinInput.value === DEMO_PIN) { sessionStorage.setItem("home-dashboard-demo-access", "granted"); demoGate.classList.add("unlocked"); showToast("Демо-панель открыта"); } else { pinMessage.textContent = "Неверный код. Попробуйте ещё раз."; pinInput.select(); } }); if (sessionStorage.getItem("home-dashboard-demo-access") === "granted") demoGate.classList.add("unlocked"); if ("serviceWorker" in navigator) navigator.serviceWorker.register("./service-worker.js").catch(() => {}); render();

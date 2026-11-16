@@ -58,7 +58,6 @@
             <span class="connection-badge" title="После подключения Home Assistant здесь появится состояние связи">
               <span class="signal-dot"></span> Демо-режим
             </span>
-            <button class="icon-button" id="theme-toggle" aria-label="Переключить контраст">◐</button>
           </div>
         </header>
 
@@ -96,49 +95,52 @@
 
           <div class="map-layout">
             <article class="floorplan-card">
-              <div class="plan-meta"><span class="floor-label">1 этаж</span><span>Нажмите на комнату</span></div>
+              <div class="plan-meta"><span class="floor-label">1 этаж</span><span>Выберите комнату для приближения</span><button class="map-reset" id="map-reset" type="button">Весь этаж</button></div>
               <svg class="floor-map" id="floor-1" viewBox="0 0 760 520" role="img" aria-label="План первого этажа">
-                <path class="outer-wall" d="M60 85H270V45H470V90H675V250H710V445H500V480H250V445H60Z" />
+                <path class="outer-wall" d="M45 95H75V62H190V82H245V40H396V86H452V112H640V258H692V455H455V480H225V446H62V380H38Z" />
                 <g class="rooms">
-                  <path class="floor-room" data-room="f1-office" d="M75 100H260V270H75Z" />
-                  <path class="floor-room" data-room="f1-entry" d="M285 60H455V155H285Z" />
-                  <path class="floor-room" data-room="f1-hall" d="M285 178H455V335H285Z" />
-                  <path class="floor-room" data-room="f1-kitchen" d="M478 105H660V335H478Z" />
-                  <path class="floor-room" data-room="f1-toilet" d="M478 360H570V430H478Z" />
-                  <path class="floor-room" data-room="f1-kitchen" d="M250 360H455V430H250Z" />
-                  <path class="floor-room terrace-room" data-room="f1-terrace" d="M75 295H225V430H75Z" />
+                  <path class="floor-room" data-room="f1-office" d="M70 105H104V79H184V105H214V144H242V240H194V264H72V225H50V130H70Z" />
+                  <path class="floor-room" data-room="f1-entry" d="M274 56H376V84H402V192H354V172H294V142H274Z" />
+                  <path class="floor-room" data-room="f1-hall" d="M244 157H294V190H354V211H425V258H390V318H342V360H266V316H234V248H244Z" />
+                  <path class="floor-room" data-room="f1-kitchen" d="M425 130H620V254H592V294H535V330H428V260H398V210H425Z" />
+                  <path class="floor-room" data-room="f1-toilet" d="M600 285H670V418H610V382H580V334H600Z" />
+                  <path class="floor-room" data-room="f1-kitchen" d="M110 280H232V318H266V365H342V438H220V410H100V350H78V300H110Z" />
+                  <path class="floor-room terrace-room" data-room="f1-terrace" d="M360 342H535V392H580V438H454V462H360Z" />
                 </g>
                 <g class="room-labels">
-                  <text x="167" y="188">Кабинет</text><text class="room-sub" x="154" y="213">1 этаж</text>
-                  <text x="345" y="112">Предбанник</text><text x="337" y="252">Коридор</text>
-                  <text x="532" y="218">Кухня</text><text class="room-sub" x="525" y="242">Rooms 3–4</text>
-                  <text class="small-room" x="486" y="401">С/У</text>
-                  <text x="315" y="401">Кухня</text><text x="110" y="364">Терраса</text>
+                  <text x="103" y="178">Кабинет</text><text class="room-sub" x="114" y="201">Room 1</text>
+                  <text x="294" y="123">Предбанник</text><text x="271" y="265">Коридор</text>
+                  <text x="480" y="220">Кухня</text><text class="room-sub" x="474" y="244">Room 3</text>
+                  <text class="small-room" x="610" y="351">С/У</text>
+                  <text x="185" y="363">Кухня</text><text class="room-sub" x="196" y="385">Room 4</text><text x="407" y="407">Терраса</text>
                 </g>
-                <g class="map-device device-light" data-room="f1-office"><circle cx="145" cy="142" r="13"/><path d="M145 122V112M126 142H116M164 142H174M132 129L124 121M158 129L166 121"/></g>
-                <g class="map-device device-speaker" data-room="f1-office"><rect x="188" y="212" width="19" height="25" rx="6"/><path d="M193 229h9"/></g>
-                <g class="map-device device-light" data-room="f1-hall"><circle cx="372" cy="220" r="13"/><path d="M372 200V190M353 220H343M391 220H401M359 207L351 199M385 207L393 199"/></g>
-                <g class="map-device device-vacuum" data-room="f1-kitchen"><circle cx="567" cy="285" r="17"/><circle cx="567" cy="285" r="8"/><path d="M555 273l24 24"/></g>
-                <g class="map-device device-plug" data-room="f1-kitchen"><rect x="610" y="170" width="22" height="24" rx="5"/><path d="M616 178v7M626 178v7"/></g>
+                <g class="map-device device-light"><circle cx="148" cy="139" r="13"/><path d="M148 119V109M129 139H119M167 139H177M135 126L127 118M161 126L169 118"/></g>
+                <g class="map-device device-speaker"><rect x="183" y="210" width="19" height="25" rx="6"/><path d="M188 227h9"/></g>
+                <g class="map-device device-light"><circle cx="305" cy="230" r="13"/><path d="M305 210V200M286 230H276M324 230H334M292 217L284 209M318 217L326 209"/></g>
+                <g class="map-device device-vacuum"><circle cx="245" cy="348" r="17"/><circle cx="245" cy="348" r="8"/><path d="M233 336l24 24"/></g>
+                <g class="map-device device-plug"><rect x="543" y="174" width="22" height="24" rx="5"/><path d="M549 182v7M559 182v7"/></g>
+                <g class="map-device device-camera"><rect x="485" y="161" width="25" height="17" rx="4"/><path d="M510 165l12-7v23l-12-7"/></g>
+                <g class="map-device device-camera perimeter-camera"><rect x="45" y="268" width="22" height="15" rx="4"/><path d="M67 271l11-7v21l-11-7"/></g>
               </svg>
               <svg class="floor-map hidden" id="floor-2" viewBox="0 0 760 520" role="img" aria-label="План второго этажа">
-                <path class="outer-wall" d="M60 70H280V40H470V85H685V275H640V465H350V430H130V470H60Z" />
+                <path class="outer-wall" d="M38 105H84V72H232V104H276V50H382V76H510V110H664V255H628V315H688V470H438V495H252V458H96V420H38Z" />
                 <g class="rooms">
-                  <path class="floor-room" data-room="f2-guest" d="M75 85H260V255H75Z" />
-                  <path class="floor-room" data-room="f2-stairs" d="M285 60H450V250H285Z" />
-                  <path class="floor-room" data-room="f2-bath" d="M475 100H670V245H475Z" />
-                  <path class="floor-room" data-room="f2-office" d="M165 285H360V445H165Z" />
-                  <path class="floor-room" data-room="f2-bedroom" d="M390 280H625V450H390Z" />
+                  <path class="floor-room" data-room="f2-guest" d="M60 125H95V92H185V116H230V155H264V230H232V265H112V245H63Z" />
+                  <path class="floor-room" data-room="f2-stairs" d="M278 80H372V116H405V205H376V300H322V330H276V274H246V208H278Z" />
+                  <path class="floor-room" data-room="f2-bath" d="M432 125H640V242H594V272H502V310H438V220H410V165H432Z" />
+                  <path class="floor-room" data-room="f2-office" d="M82 287H228V315H267V385H307V443H252V468H108V430H72V335H82Z" />
+                  <path class="floor-room" data-room="f2-bedroom" d="M328 338H467V300H590V327H650V445H612V475H448V452H345V418H328Z" />
                 </g>
                 <g class="room-labels">
-                  <text x="117" y="175">Гостевая</text><text x="327" y="157">Лестница</text><text x="535" y="175">Ванная</text>
-                  <text x="220" y="370">Кабинет</text><text x="455" y="370">Спальня</text>
+                  <text x="106" y="185">Гостевая</text><text x="292" y="202">Лестница</text><text x="505" y="195">Ванная</text>
+                  <text x="151" y="380">Кабинет</text><text x="465" y="395">Спальня</text>
                 </g>
-                <g class="map-device device-light" data-room="f2-guest"><circle cx="166" cy="130" r="13"/><path d="M166 110V100M147 130H137M185 130H195M153 117L145 109M179 117L187 109"/></g>
-                <g class="map-device device-leak" data-room="f2-bath"><path d="M568 130c-13 17-17 24-17 34a17 17 0 0 0 34 0c0-10-4-17-17-34Z"/></g>
-                <g class="map-device device-vacuum" data-room="f2-office"><circle cx="271" cy="397" r="17"/><circle cx="271" cy="397" r="8"/><path d="M259 385l24 24"/></g>
-                <g class="map-device device-temperature" data-room="f2-office"><rect x="308" y="312" width="21" height="31" rx="9"/><path d="M318 319v15M312 337a6 6 0 1 0 12 0 6 6 0 0 0-12 0Z"/></g>
-                <g class="map-device device-speaker" data-room="f2-bedroom"><rect x="550" y="306" width="23" height="30" rx="7"/><path d="M556 327h11"/></g>
+                <g class="map-device device-light"><circle cx="159" cy="145" r="13"/><path d="M159 125V115M140 145H130M178 145H188M146 132L138 124M172 132L180 124"/></g>
+                <g class="map-device device-leak"><path d="M544 135c-13 17-17 24-17 34a17 17 0 0 0 34 0c0-10-4-17-17-34Z"/></g>
+                <g class="map-device device-vacuum"><circle cx="191" cy="391" r="17"/><circle cx="191" cy="391" r="8"/><path d="M179 379l24 24"/></g>
+                <g class="map-device device-temperature"><rect x="237" y="335" width="21" height="31" rx="9"/><path d="M247 342v15M241 360a6 6 0 1 0 12 0 6 6 0 0 0-12 0Z"/></g>
+                <g class="map-device device-speaker"><rect x="551" y="348" width="23" height="30" rx="7"/><path d="M557 369h11"/></g>
+                <g class="map-device device-camera perimeter-camera"><rect x="648" y="283" width="22" height="15" rx="4"/><path d="M648 286l-11-7v21l11-7"/></g>
               </svg>
               <div class="map-legend"><span><i class="legend-light"></i>Свет</span><span><i class="legend-vacuum"></i>Пылесос</span><span><i class="legend-sensor"></i>Датчик</span></div>
             </article>
@@ -153,11 +155,14 @@
             <article class="summary-device vacuum-summary"><div><span class="device-label">РОБОТ · 1 ЭТАЖ</span><h3>Xiaomi M40</h3><p id="vacuum-1-summary">На базе · 100%</p></div><button class="round-action" data-vacuum="vacuum-1" aria-label="Управлять пылесосом 1 этажа">›</button></article>
             <article class="summary-device vacuum-summary"><div><span class="device-label">РОБОТ · 2 ЭТАЖ</span><h3>Xiaomi M40</h3><p id="vacuum-2-summary">На базе · 82%</p></div><button class="round-action" data-vacuum="vacuum-2" aria-label="Управлять пылесосом 2 этажа">›</button></article>
             <article class="summary-device safety-summary"><div><span class="device-label">БЕЗОПАСНОСТЬ</span><h3>Ванная, 2 этаж</h3><p>Датчик протечки: сухо</p></div><span class="safe-check">✓</span></article>
+            <article class="summary-device camera-summary"><div><span class="device-label">ВИДЕОНАБЛЮДЕНИЕ</span><h3>Камеры участка</h3><p>Регистратор · подключение позже</p></div><button class="round-action" data-camera="nvr" aria-label="Открыть камеры участка">›</button></article>
           </div>
         </section>
       </main>
     </div>
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <dialog class="settings-modal" id="vacuum-modal"></dialog>
+    <dialog class="settings-modal" id="camera-modal"></dialog>
     <script src="./app.js"></script>
   </body>
 </html>
