@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b1020" />
+    <meta name="description" content="Личная панель управления умным домом" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Мой дом</title>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Навигация">
+        <a class="brand" href="#top" aria-label="Мой дом, главная">
+          <span class="brand-mark" aria-hidden="true">⌂</span>
+          <span>МОЙ ДОМ</span>
+        </a>
+
+        <nav class="nav-list">
+          <a class="nav-item active" href="#top"><span>⌂</span> Обзор</a>
+          <a class="nav-item" href="#plan"><span>⌘</span> Карта дома</a>
+          <a class="nav-item" href="#scenarios"><span>✦</span> Сценарии</a>
+          <a class="nav-item" href="#devices"><span>◌</span> Устройства</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="profile-dot">А</div>
+          <div>
+            <strong>Ваш дом</strong>
+            <small>Личный доступ</small>
+          </div>
+        </div>
+      </aside>
+
+      <main id="top" class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">УМНЫЙ ДОМ</p>
+            <h1>Добрый вечер</h1>
+          </div>
+          <div class="topbar-actions">
+            <span class="connection-badge" title="После подключения Home Assistant здесь появится состояние связи">
+              <span class="signal-dot"></span> Демо-режим
+            </span>
+            <button class="icon-button" id="theme-toggle" aria-label="Переключить контраст">◐</button>
+          </div>
+        </header>
+
+        <section class="home-status" aria-label="Сводка состояния дома">
+          <article class="status-card weather-card">
+            <span class="weather-icon">☁</span>
+            <div><strong>Дом в порядке</strong><small>Все системы на связи в демо</small></div>
+          </article>
+          <article class="status-card"><span class="status-icon purple">◒</span><div><strong id="lights-count">0</strong><small>света включено</small></div></article>
+          <article class="status-card"><span class="status-icon green">⌁</span><div><strong>22.8°</strong><small>кабинет, 2 этаж</small></div></article>
+          <article class="status-card leak-status"><span class="status-icon blue">◈</span><div><strong>Сухо</strong><small>ванная, 2 этаж</small></div></article>
+        </section>
+
+        <section id="scenarios" class="section-block">
+          <div class="section-heading">
+            <div><p class="eyebrow">БЫСТРЫЕ ДЕЙСТВИЯ</p><h2>Сценарии</h2></div>
+            <span class="section-note">Нажмите, чтобы запустить</span>
+          </div>
+          <div class="scenes-grid">
+            <button class="scene-card scene-night" data-scene="night"><span class="scene-icon">☾</span><span><strong>Спокойной ночи</strong><small>Выключить свет и розетки</small></span><b>›</b></button>
+            <button class="scene-card scene-away" data-scene="away"><span class="scene-icon">⌂</span><span><strong>Никого нет дома</strong><small>Проверить свет и устройства</small></span><b>›</b></button>
+            <button class="scene-card scene-clean" data-scene="clean-first"><span class="scene-icon">✦</span><span><strong>Уборка, 1 этаж</strong><small>Запустить робот M40</small></span><b>›</b></button>
+            <button class="scene-card scene-clean" data-scene="clean-second"><span class="scene-icon">✦</span><span><strong>Уборка, 2 этаж</strong><small>Запустить робот M40</small></span><b>›</b></button>
+          </div>
+        </section>
+
+        <section id="plan" class="section-block plan-section">
+          <div class="section-heading">
+            <div><p class="eyebrow">ИНТЕРАКТИВНАЯ КАРТА</p><h2>Карта дома</h2></div>
+            <div class="floor-switch" role="tablist" aria-label="Выбор этажа">
+              <button class="floor-tab active" data-floor="1" role="tab" aria-selected="true">1 этаж</button>
+              <button class="floor-tab" data-floor="2" role="tab" aria-selected="false">2 этаж</button>
+            </div>
+          </div>
+
+          <div class="map-layout">
+            <article class="floorplan-card">
+              <div class="plan-meta"><span class="floor-label">1 этаж</span><span>Нажмите на комнату</span></div>
+              <svg class="floor-map" id="floor-1" viewBox="0 0 760 520" role="img" aria-label="План первого этажа">
+                <path class="outer-wall" d="M60 85H270V45H470V90H675V250H710V445H500V480H250V445H60Z" />
+                <g class="rooms">
+                  <path class="floor-room" data-room="f1-office" d="M75 100H260V270H75Z" />
+                  <path class="floor-room" data-room="f1-entry" d="M285 60H455V155H285Z" />
+                  <path class="floor-room" data-room="f1-hall" d="M285 178H455V335H285Z" />
+                  <path class="floor-room" data-room="f1-kitchen" d="M478 105H660V335H478Z" />
+                  <path class="floor-room" data-room="f1-toilet" d="M478 360H570V430H478Z" />
+                  <path class="floor-room" data-room="f1-kitchen" d="M250 360H455V430H250Z" />
+                  <path class="floor-room terrace-room" data-room="f1-terrace" d="M75 295H225V430H75Z" />
+                </g>
+                <g class="room-labels">
+                  <text x="167" y="188">Кабинет</text><text class="room-sub" x="154" y="213">1 этаж</text>
+                  <text x="345" y="112">Предбанник</text><text x="337" y="252">Коридор</text>
+                  <text x="532" y="218">Кухня</text><text class="room-sub" x="525" y="242">Rooms 3–4</text>
+                  <text class="small-room" x="486" y="401">С/У</text>
+                  <text x="315" y="401">Кухня</text><text x="110" y="364">Терраса</text>
+                </g>
+                <g class="map-device device-light" data-room="f1-office"><circle cx="145" cy="142" r="13"/><path d="M145 122V112M126 142H116M164 142H174M132 129L124 121M158 129L166 121"/></g>
+                <g class="map-device device-speaker" data-room="f1-office"><rect x="188" y="212" width="19" height="25" rx="6"/><path d="M193 229h9"/></g>
+                <g class="map-device device-light" data-room="f1-hall"><circle cx="372" cy="220" r="13"/><path d="M372 200V190M353 220H343M391 220H401M359 207L351 199M385 207L393 199"/></g>
+                <g class="map-device device-vacuum" data-room="f1-kitchen"><circle cx="567" cy="285" r="17"/><circle cx="567" cy="285" r="8"/><path d="M555 273l24 24"/></g>
+                <g class="map-device device-plug" data-room="f1-kitchen"><rect x="610" y="170" width="22" height="24" rx="5"/><path d="M616 178v7M626 178v7"/></g>
+              </svg>
+              <svg class="floor-map hidden" id="floor-2" viewBox="0 0 760 520" role="img" aria-label="План второго этажа">
+                <path class="outer-wall" d="M60 70H280V40H470V85H685V275H640V465H350V430H130V470H60Z" />
+                <g class="rooms">
+                  <path class="floor-room" data-room="f2-guest" d="M75 85H260V255H75Z" />
+                  <path class="floor-room" data-room="f2-stairs" d="M285 60H450V250H285Z" />
+                  <path class="floor-room" data-room="f2-bath" d="M475 100H670V245H475Z" />
+                  <path class="floor-room" data-room="f2-office" d="M165 285H360V445H165Z" />
+                  <path class="floor-room" data-room="f2-bedroom" d="M390 280H625V450H390Z" />
+                </g>
+                <g class="room-labels">
+                  <text x="117" y="175">Гостевая</text><text x="327" y="157">Лестница</text><text x="535" y="175">Ванная</text>
+                  <text x="220" y="370">Кабинет</text><text x="455" y="370">Спальня</text>
+                </g>
+                <g class="map-device device-light" data-room="f2-guest"><circle cx="166" cy="130" r="13"/><path d="M166 110V100M147 130H137M185 130H195M153 117L145 109M179 117L187 109"/></g>
+                <g class="map-device device-leak" data-room="f2-bath"><path d="M568 130c-13 17-17 24-17 34a17 17 0 0 0 34 0c0-10-4-17-17-34Z"/></g>
+                <g class="map-device device-vacuum" data-room="f2-office"><circle cx="271" cy="397" r="17"/><circle cx="271" cy="397" r="8"/><path d="M259 385l24 24"/></g>
+                <g class="map-device device-temperature" data-room="f2-office"><rect x="308" y="312" width="21" height="31" rx="9"/><path d="M318 319v15M312 337a6 6 0 1 0 12 0 6 6 0 0 0-12 0Z"/></g>
+                <g class="map-device device-speaker" data-room="f2-bedroom"><rect x="550" y="306" width="23" height="30" rx="7"/><path d="M556 327h11"/></g>
+              </svg>
+              <div class="map-legend"><span><i class="legend-light"></i>Свет</span><span><i class="legend-vacuum"></i>Пылесос</span><span><i class="legend-sensor"></i>Датчик</span></div>
+            </article>
+
+            <aside class="room-panel" id="room-panel" aria-live="polite"></aside>
+          </div>
+        </section>
+
+        <section id="devices" class="section-block devices-section">
+          <div class="section-heading"><div><p class="eyebrow">СОСТОЯНИЕ УСТРОЙСТВ</p><h2>Главное сейчас</h2></div></div>
+          <div class="device-summary-grid">
+            <article class="summary-device vacuum-summary"><div><span class="device-label">РОБОТ · 1 ЭТАЖ</span><h3>Xiaomi M40</h3><p id="vacuum-1-summary">На базе · 100%</p></div><button class="round-action" data-vacuum="vacuum-1" aria-label="Управлять пылесосом 1 этажа">›</button></article>
+            <article class="summary-device vacuum-summary"><div><span class="device-label">РОБОТ · 2 ЭТАЖ</span><h3>Xiaomi M40</h3><p id="vacuum-2-summary">На базе · 82%</p></div><button class="round-action" data-vacuum="vacuum-2" aria-label="Управлять пылесосом 2 этажа">›</button></article>
+            <article class="summary-device safety-summary"><div><span class="device-label">БЕЗОПАСНОСТЬ</span><h3>Ванная, 2 этаж</h3><p>Датчик протечки: сухо</p></div><span class="safe-check">✓</span></article>
+          </div>
+        </section>
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="./app.js"></script>
+  </body>
+</html>

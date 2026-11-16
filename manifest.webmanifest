@@ -1,0 +1,9 @@
+{
+  "name": "Мой дом",
+  "short_name": "Мой дом",
+  "lang": "ru",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#090d19",
+  "theme_color": "#0b1020"
+}
