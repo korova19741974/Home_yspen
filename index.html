@@ -95,7 +95,7 @@
 
           <div class="map-layout">
             <article class="floorplan-card">
-              <div class="plan-meta"><span class="floor-label">2 этаж</span><span>Нажмите на комнату — основной свет; на маркер — отдельный источник</span></div>
+              <div class="plan-meta"><span class="floor-label">2 этаж</span><span>Нажимайте прямо на нужную зону света; техника отмечена круглыми маркерами</span></div>
               <div class="lighting-presets" aria-label="Варианты освещения второго этажа"><span>Свет на плане</span><button class="light-preset" type="button" data-light-preset="off">Ночь</button><button class="light-preset" type="button" data-light-preset="work">Рабочий</button><button class="light-preset" type="button" data-light-preset="evening">Вечер</button><button class="light-preset" type="button" data-light-preset="all">Весь этаж</button></div>
               <svg class="floor-map hidden" id="floor-1" viewBox="0 0 760 520" role="img" aria-label="План первого этажа">
                 <path class="outer-wall" d="M45 95H75V62H190V82H245V40H396V86H452V112H640V258H692V455H455V480H225V446H62V380H38Z" />
@@ -128,22 +128,31 @@
                   <pattern id="wood-floor" width="32" height="32" patternUnits="userSpaceOnUse"><rect width="32" height="32" fill="#37281e"/><path d="M0 8h32M0 24h32M16 8v16" stroke="#594230" stroke-width="1" opacity=".7"/></pattern>
                   <pattern id="tile-floor" width="32" height="32" patternUnits="userSpaceOnUse"><rect width="32" height="32" fill="#403c3d"/><path d="M0 0h32v32H0z" fill="none" stroke="#82746f" stroke-width="2" opacity=".8"/></pattern>
                   <linearGradient id="green-closet" x1="0" x2="1"><stop stop-color="#213e32"/><stop offset="1" stop-color="#47674f"/></linearGradient>
+                  <clipPath id="clip-office"><path d="M580 680H1157V1180H580Z"/></clipPath>
+                  <clipPath id="clip-bedroom-top"><path d="M25 20H510V440H25Z"/></clipPath>
+                  <clipPath id="clip-closet"><path d="M465 20H755V350H465Z"/></clipPath>
+                  <clipPath id="clip-stairs"><rect x="470" y="250" width="330" height="880"/><rect x="700" y="30" width="435" height="380"/></clipPath>
+                  <clipPath id="clip-laundry"><path d="M850 245H1145V480H850Z"/></clipPath>
+                  <clipPath id="clip-bedroom-green"><path d="M20 400H535V1120H20Z"/></clipPath>
+                  <clipPath id="clip-wardrobe"><path d="M25 395H535V565H25Z"/></clipPath>
+                  <clipPath id="clip-bed-lamp-top"><path d="M300 525H535V800H300Z"/></clipPath>
+                  <clipPath id="clip-bed-lamp-bottom"><path d="M300 785H535V1080H300Z"/></clipPath>
+                  <clipPath id="clip-bath"><path d="M635 405H1140V775H635Z"/></clipPath>
+                  <clipPath id="clip-mirror"><path d="M675 420H955V545H675Z"/></clipPath>
                 </defs>
                 <g class="original-plan-images" pointer-events="none">
-                  <image class="plan-photo" data-plan-image="plan-01" href="./assets/floor2/photo_2026-11-18_10-58-48.jpg" width="1157" height="1280"/>
-                  <image class="plan-photo" data-plan-image="plan-02" href="./assets/floor2/photo_2026-11-18_10-58-49.jpg" width="1157" height="1280"/>
-                  <image class="plan-photo" data-plan-image="plan-03" href="./assets/floor2/photo_2026-11-18_10-58-50%20(2).jpg" width="1157" height="1280"/>
-                  <image class="plan-photo" data-plan-image="plan-04" href="./assets/floor2/photo_2026-11-18_10-58-50.jpg" width="1157" height="1280"/>
-                  <image class="plan-photo" data-plan-image="plan-05" href="./assets/floor2/photo_2026-11-18_10-58-51.jpg" width="1157" height="1280"/>
-                  <image class="plan-photo" data-plan-image="plan-06" href="./assets/floor2/photo_2026-11-18_10-58-52.jpg" width="1157" height="1280"/>
-                  <image class="plan-photo" data-plan-image="plan-07" href="./assets/floor2/photo_2026-11-18_10-58-53%20(2).jpg" width="1157" height="1280"/>
-                  <image class="plan-photo" data-plan-image="plan-08" href="./assets/floor2/photo_2026-11-18_10-58-53.jpg" width="1157" height="1280"/>
-                  <image class="plan-photo" data-plan-image="plan-09" href="./assets/floor2/photo_2026-11-18_10-58-54.jpg" width="1157" height="1280"/>
-                  <image class="plan-photo" data-plan-image="plan-10" href="./assets/floor2/photo_2026-11-18_10-58-55%20(2).jpg" width="1157" height="1280"/>
-                  <image class="plan-photo" data-plan-image="plan-11" href="./assets/floor2/photo_2026-11-18_10-58-55.jpg" width="1157" height="1280"/>
-                  <image class="plan-photo" data-plan-image="plan-12" href="./assets/floor2/photo_2026-11-18_10-58-56.jpg" width="1157" height="1280"/>
-                  <image class="plan-photo" data-plan-image="plan-13" href="./assets/floor2/photo_2026-11-18_10-58-59.jpg" width="1157" height="1280"/>
-                  <image class="plan-photo" data-plan-image="plan-14" href="./assets/floor2/photo_2026-11-18_10-59-00.jpg" width="1157" height="1280"/>
+                  <image class="base-plan" href="./assets/floor2/layers/base-dark.jpg" width="1157" height="1280" preserveAspectRatio="none"/>
+                  <image class="lighting-layer" data-light-layer="f2-bedroom-main" href="./assets/floor2/layers/f2-bedroom-main.webp" width="1157" height="1280" preserveAspectRatio="none"/>
+                  <image class="lighting-layer" data-light-layer="f2-closet-light" href="./assets/floor2/layers/f2-closet-light.webp" width="1157" height="1280" preserveAspectRatio="none"/>
+                  <image class="lighting-layer" data-light-layer="f2-stairs-light" href="./assets/floor2/layers/f2-stairs-light.webp" width="1157" height="1280" preserveAspectRatio="none"/>
+                  <image class="lighting-layer" data-light-layer="f2-laundry-light" href="./assets/floor2/layers/f2-laundry-light.webp" width="1157" height="1280" preserveAspectRatio="none"/>
+                  <image class="lighting-layer" data-light-layer="f2-guest-accent" href="./assets/floor2/layers/f2-guest-accent.webp" width="1157" height="1280" preserveAspectRatio="none"/>
+                  <image class="lighting-layer" data-light-layer="f2-guest-wardrobe" href="./assets/floor2/layers/f2-guest-wardrobe.webp" width="1157" height="1280" preserveAspectRatio="none"/>
+                  <image class="lighting-layer" data-light-layer="f2-bed-lamp-1" href="./assets/floor2/layers/f2-bed-lamp-1.webp" width="1157" height="1280" preserveAspectRatio="none"/>
+                  <image class="lighting-layer" data-light-layer="f2-bed-lamp-2" href="./assets/floor2/layers/f2-bed-lamp-2.webp" width="1157" height="1280" preserveAspectRatio="none"/>
+                  <image class="lighting-layer" data-light-layer="f2-bath-main" href="./assets/floor2/layers/f2-bath-main.webp" width="1157" height="1280" preserveAspectRatio="none"/>
+                  <image class="lighting-layer" data-light-layer="f2-bath-mirror" href="./assets/floor2/layers/f2-bath-mirror.webp" width="1157" height="1280" preserveAspectRatio="none"/>
+                  <image class="lighting-layer" data-light-layer="f2-office-light" href="./assets/floor2/layers/f2-office-light.webp" width="1157" height="1280" preserveAspectRatio="none"/>
                 </g>
                 <path class="outer-wall" d="M28 24H732V676H28Z" />
                 <g class="rooms">
@@ -155,13 +164,6 @@
                   <path class="floor-room" data-room="f2-bath" d="M470 325H700V480H635V462H470Z"/>
                   <rect class="floor-room" data-room="f2-office" x="470" y="500" width="230" height="145" rx="3"/>
                 </g>
-                <g class="room-glow" data-room-glow="f2-bedroom"><rect x="48" y="48" width="265" height="205" rx="3"/></g>
-                <g class="room-glow" data-room-glow="f2-closet"><rect x="333" y="48" width="117" height="185" rx="3"/></g>
-                <g class="room-glow" data-room-glow="f2-stairs"><path d="M470 48H700V205H610V235H470Z"/></g>
-                <g class="room-glow" data-room-glow="f2-laundry"><rect x="540" y="215" width="160" height="88" rx="3"/></g>
-                <g class="room-glow" data-room-glow="f2-guest"><rect x="48" y="275" width="265" height="370" rx="3"/></g>
-                <g class="room-glow" data-room-glow="f2-bath"><path d="M470 325H700V480H635V462H470Z"/></g>
-                <g class="room-glow" data-room-glow="f2-office"><rect x="470" y="500" width="230" height="145" rx="3"/></g>
                 <g class="floor-furniture" pointer-events="none">
                   <!-- Главная спальня: подушки у левого изголовья, как на плане -->
                   <rect x="75" y="70" width="205" height="160" rx="4" class="rug"/><rect x="95" y="82" width="150" height="126" rx="5" class="bed"/><rect x="101" y="90" width="31" height="46" rx="5" class="pillow"/><rect x="101" y="146" width="31" height="46" rx="5" class="pillow"/><rect x="136" y="87" width="103" height="116" rx="3" class="bed-cover"/><rect x="65" y="65" width="28" height="36" class="nightstand"/><rect x="65" y="201" width="28" height="36" class="nightstand"/><rect x="257" y="102" width="35" height="88" class="dresser"/>
@@ -180,54 +182,26 @@
                 <g class="room-labels">
                   <text x="143" y="246">Главная спальня</text><text class="room-sub" x="354" y="226">Гардеробная</text><text x="560" y="198">Лестница</text><text class="small-room" x="563" y="300">Постирочная</text><text x="116" y="630">Спальня · зелёный шкаф</text><text x="547" y="478">Ванная</text><text x="547" y="638">Кабинет</text>
                 </g>
-                <g class="map-device device-light" data-map-toggle="f2-bedroom-main" data-light-device="f2-bedroom-main" tabindex="0" role="button" aria-label="Основной свет главной спальни"><circle cx="185" cy="72" r="13"/><path d="M185 52v-10m-19 30h-10m38 0h10m-31-11-8-8m28 8 8-8"/></g>
-                <g class="map-device device-light mini-light" data-map-toggle="f2-bed-lamp-1" data-light-device="f2-bed-lamp-1" tabindex="0" role="button" aria-label="Лампа у кровати сверху"><circle cx="78" cy="83" r="9"/><path d="M78 69v-7m-8 21h-7m23 0h7"/></g>
-                <g class="map-device device-light mini-light" data-map-toggle="f2-bed-lamp-2" data-light-device="f2-bed-lamp-2" tabindex="0" role="button" aria-label="Лампа у кровати снизу"><circle cx="78" cy="219" r="9"/><path d="M78 205v-7m-8 21h-7m23 0h7"/></g>
-                <g class="map-device device-light" data-map-toggle="f2-closet-light" data-light-device="f2-closet-light" tabindex="0" role="button" aria-label="Свет гардеробной"><circle cx="390" cy="83" r="13"/><path d="M390 63v-10m-19 30h-10m38 0h10m-31-11-8-8m28 8 8-8"/></g>
-                <g class="map-device device-light" data-map-toggle="f2-stairs-light" data-light-device="f2-stairs-light" tabindex="0" role="button" aria-label="Свет лестницы"><circle cx="675" cy="77" r="13"/><path d="M675 57v-10m-19 30h-10m38 0h10m-31-11-8-8m28 8 8-8"/></g>
-                <g class="map-device device-light" data-map-toggle="f2-laundry-light" data-light-device="f2-laundry-light" tabindex="0" role="button" aria-label="Свет постирочной"><circle cx="550" cy="225" r="13"/><path d="M550 205v-10m-19 30h-10m38 0h10m-31-11-8-8m28 8 8-8"/></g>
-                <g class="map-device device-light" data-map-toggle="f2-guest-main" data-light-device="f2-guest-main" tabindex="0" role="button" aria-label="Основной свет спальни с зелёным шкафом"><circle cx="170" cy="375" r="13"/><path d="M170 355v-10m-19 30h-10m38 0h10m-31-11-8-8m28 8 8-8"/></g>
-                <g class="map-device device-light mini-light" data-map-toggle="f2-guest-wardrobe" data-light-device="f2-guest-wardrobe" tabindex="0" role="button" aria-label="Подсветка зелёного шкафа"><circle cx="279" cy="319" r="9"/><path d="M279 305v-7m-8 21h-7m23 0h7"/></g>
-                <g class="map-device device-light" data-map-toggle="f2-bath-main" data-light-device="f2-bath-main" tabindex="0" role="button" aria-label="Основной свет ванной"><circle cx="675" cy="342" r="13"/><path d="M675 322v-10m-19 30h-10m38 0h10m-31-11-8-8m28 8 8-8"/></g>
-                <g class="map-device device-light mini-light" data-map-toggle="f2-bath-mirror" data-light-device="f2-bath-mirror" tabindex="0" role="button" aria-label="Подсветка зеркала"><circle cx="510" cy="361" r="9"/><path d="M510 347v-7m-8 21h-7m23 0h7"/></g>
-                <g class="map-device device-leak"><path d="M660 405c-13 17-17 24-17 34a17 17 0 0 0 34 0c0-10-4-17-17-34Z"/></g>
-                <g class="map-device device-light" data-map-toggle="f2-office-light" data-light-device="f2-office-light" tabindex="0" role="button" aria-label="Свет кабинета"><circle cx="525" cy="515" r="13"/><path d="M525 495v-10m-19 30h-10m38 0h10m-31-11-8-8m28 8 8-8"/></g>
-                <g id="vacuum-2-marker" class="map-device device-vacuum" data-map-vacuum="vacuum-2" tabindex="0" role="button" aria-label="Управление роботом-пылесосом второго этажа"><circle cx="555" cy="615" r="17"/><circle cx="555" cy="615" r="8"/><path d="M543 603l24 24"/></g>
-                <g class="map-device device-temperature"><rect x="680" y="566" width="21" height="31" rx="9"/><path d="M690 573v15M684 591a6 6 0 1 0 12 0 6 6 0 0 0-12 0Z"/></g>
-                <g class="map-device device-speaker"><rect x="274" y="210" width="18" height="25" rx="6"/><path d="M279 227h9"/></g>
                 <g class="photo-room-overlay">
-                  <rect class="floor-room photo-room" data-room="f2-bedroom" x="42" y="28" width="400" height="305"/>
-                  <rect class="floor-room photo-room" data-room="f2-closet" x="440" y="25" width="235" height="300"/>
-                  <rect class="floor-room photo-room" data-room="f2-stairs" x="685" y="30" width="350" height="290"/>
-                  <rect class="floor-room photo-room" data-room="f2-laundry" x="820" y="240" width="250" height="190"/>
-                  <rect class="floor-room photo-room" data-room="f2-guest" x="42" y="350" width="420" height="650"/>
-                  <rect class="floor-room photo-room" data-room="f2-bath" x="650" y="425" width="420" height="280"/>
-                  <rect class="floor-room photo-room" data-room="f2-office" x="650" y="715" width="420" height="330"/>
+                  <rect class="floor-room photo-room" data-room="f2-bedroom" x="35" y="30" width="455" height="400" tabindex="0" role="button" aria-label="Основной свет спальни"><title>Основной свет спальни</title></rect>
+                  <rect class="floor-room photo-room" data-room="f2-closet" x="485" y="30" width="255" height="320" tabindex="0" role="button" aria-label="Свет гардеробной"><title>Свет гардеробной</title></rect>
+                  <path class="floor-room photo-room" data-room="f2-stairs" d="M745 35H1120V385H790V1125H480V360H745Z" tabindex="0" role="button" aria-label="Свет лестницы и коридора"><title>Свет лестницы и коридора</title></path>
+                  <rect class="floor-room photo-room" data-room="f2-laundry" x="865" y="260" width="260" height="220" tabindex="0" role="button" aria-label="Свет постирочной"><title>Свет постирочной</title></rect>
+                  <rect class="floor-room photo-room" data-room="f2-guest" data-primary-light="f2-guest-wardrobe" x="35" y="420" width="500" height="245" tabindex="0" role="button" aria-label="Основной свет у зелёного шкафа"><title>Основной свет у зелёного шкафа</title></rect>
+                  <rect class="floor-room photo-room" data-room="f2-guest" data-primary-light="f2-guest-accent" x="35" y="665" width="500" height="445" tabindex="0" role="button" aria-label="Основной свет у кровати"><title>Основной свет у кровати</title></rect>
+                  <rect class="floor-room photo-room" data-room="f2-bath" x="650" y="420" width="470" height="350" tabindex="0" role="button" aria-label="Основной свет ванной"><title>Основной свет ванной</title></rect>
+                  <rect class="floor-room photo-room" data-room="f2-office" x="600" y="705" width="525" height="410" tabindex="0" role="button" aria-label="Свет кабинета"><title>Свет кабинета</title></rect>
                 </g>
-                <g class="light-pools" pointer-events="none">
-                  <ellipse class="light-pool" data-light-pool="f2-bedroom-main" cx="245" cy="170" rx="170" ry="120"/>
-                  <circle class="light-pool" data-light-pool="f2-bed-lamp-1" cx="92" cy="115" r="64"/><circle class="light-pool" data-light-pool="f2-bed-lamp-2" cx="92" cy="265" r="64"/>
-                  <ellipse class="light-pool" data-light-pool="f2-closet-light" cx="560" cy="150" rx="105" ry="100"/>
-                  <ellipse class="light-pool" data-light-pool="f2-stairs-light" cx="860" cy="175" rx="175" ry="115"/>
-                  <ellipse class="light-pool" data-light-pool="f2-laundry-light" cx="940" cy="325" rx="115" ry="80"/>
-                  <ellipse class="light-pool" data-light-pool="f2-guest-main" cx="250" cy="640" rx="180" ry="190"/>
-                  <rect class="light-pool wardrobe-pool" data-light-pool="f2-guest-wardrobe" x="75" y="360" width="385" height="70" rx="12"/>
-                  <ellipse class="light-pool" data-light-pool="f2-bath-main" cx="855" cy="570" rx="180" ry="120"/>
-                  <rect class="light-pool mirror-pool" data-light-pool="f2-bath-mirror" x="690" y="455" width="210" height="48" rx="8"/>
-                  <ellipse class="light-pool" data-light-pool="f2-office-light" cx="865" cy="865" rx="180" ry="145"/>
+                <g class="light-zone-overlay">
+                  <path class="light-zone" data-map-toggle="f2-bed-lamp-1" tabindex="0" role="button" aria-label="Верхняя прикроватная лампа" d="M375 555H525V785H330V610Z"><title>Верхняя прикроватная лампа</title></path>
+                  <path class="light-zone" data-map-toggle="f2-bed-lamp-2" tabindex="0" role="button" aria-label="Нижняя прикроватная лампа" d="M350 800H525V1080H330V865Z"><title>Нижняя прикроватная лампа</title></path>
+                  <rect class="light-zone" data-map-toggle="f2-bath-mirror" tabindex="0" role="button" aria-label="Подсветка зеркала" x="685" y="435" width="260" height="105"><title>Подсветка зеркала</title></rect>
                 </g>
-                <g class="light-hotspots">
-                  <g class="light-hotspot" data-map-toggle="f2-bedroom-main" data-light-device="f2-bedroom-main" tabindex="0" role="button" aria-label="Основной свет главной спальни"><circle class="hotspot-halo" cx="245" cy="95" r="23"/><circle class="hotspot-core" cx="245" cy="95" r="8"/></g>
-                  <g class="light-hotspot mini" data-map-toggle="f2-bed-lamp-1" data-light-device="f2-bed-lamp-1" tabindex="0" role="button" aria-label="Лампа у кровати сверху"><circle class="hotspot-halo" cx="92" cy="115" r="18"/><circle class="hotspot-core" cx="92" cy="115" r="6"/></g>
-                  <g class="light-hotspot mini" data-map-toggle="f2-bed-lamp-2" data-light-device="f2-bed-lamp-2" tabindex="0" role="button" aria-label="Лампа у кровати снизу"><circle class="hotspot-halo" cx="92" cy="265" r="18"/><circle class="hotspot-core" cx="92" cy="265" r="6"/></g>
-                  <g class="light-hotspot" data-map-toggle="f2-closet-light" data-light-device="f2-closet-light" tabindex="0" role="button" aria-label="Свет гардеробной"><circle class="hotspot-halo" cx="560" cy="92" r="23"/><circle class="hotspot-core" cx="560" cy="92" r="8"/></g>
-                  <g class="light-hotspot" data-map-toggle="f2-stairs-light" data-light-device="f2-stairs-light" tabindex="0" role="button" aria-label="Свет лестницы"><circle class="hotspot-halo" cx="870" cy="95" r="23"/><circle class="hotspot-core" cx="870" cy="95" r="8"/></g>
-                  <g class="light-hotspot mini" data-map-toggle="f2-laundry-light" data-light-device="f2-laundry-light" tabindex="0" role="button" aria-label="Свет постирочной"><circle class="hotspot-halo" cx="955" cy="280" r="18"/><circle class="hotspot-core" cx="955" cy="280" r="6"/></g>
-                  <g class="light-hotspot" data-map-toggle="f2-guest-main" data-light-device="f2-guest-main" tabindex="0" role="button" aria-label="Основной свет спальни с зелёным шкафом"><circle class="hotspot-halo" cx="255" cy="500" r="23"/><circle class="hotspot-core" cx="255" cy="500" r="8"/></g>
-                  <g class="light-hotspot mini" data-map-toggle="f2-guest-wardrobe" data-light-device="f2-guest-wardrobe" tabindex="0" role="button" aria-label="Подсветка зелёного шкафа"><circle class="hotspot-halo" cx="422" cy="395" r="18"/><circle class="hotspot-core" cx="422" cy="395" r="6"/></g>
-                  <g class="light-hotspot" data-map-toggle="f2-bath-main" data-light-device="f2-bath-main" tabindex="0" role="button" aria-label="Основной свет ванной"><circle class="hotspot-halo" cx="930" cy="530" r="23"/><circle class="hotspot-core" cx="930" cy="530" r="8"/></g>
-                  <g class="light-hotspot mirror-hotspot" data-map-toggle="f2-bath-mirror" data-light-device="f2-bath-mirror" tabindex="0" role="button" aria-label="Подсветка зеркала"><rect class="hotspot-halo" x="765" y="463" width="68" height="22" rx="8"/><rect class="hotspot-core" x="781" y="470" width="36" height="8" rx="4"/></g>
-                  <g class="light-hotspot" data-map-toggle="f2-office-light" data-light-device="f2-office-light" tabindex="0" role="button" aria-label="Свет кабинета"><circle class="hotspot-halo" cx="850" cy="760" r="23"/><circle class="hotspot-core" cx="850" cy="760" r="8"/></g>
+                <g class="equipment-markers">
+                  <g class="equipment-marker" data-map-toggle="f2-aircon" data-device-state="f2-aircon" tabindex="0" role="button" aria-label="Кондиционер спальни"><circle cx="72" cy="505" r="22"/><text x="72" y="512">❄</text><title>Кондиционер</title></g>
+                  <g id="vacuum-2-marker" class="equipment-marker vacuum-marker" data-map-vacuum="vacuum-2" tabindex="0" role="button" aria-label="Робот-пылесос второго этажа"><circle cx="825" cy="935" r="24"/><text x="825" y="943">✦</text><title>Робот-пылесос</title></g>
+                  <g class="equipment-marker sensor-marker" tabindex="0" aria-label="Датчик протечки: сухо"><circle cx="1030" cy="625" r="20"/><text x="1030" y="632">◈</text><title>Датчик протечки: сухо</title></g>
+                  <g class="equipment-marker sensor-marker" tabindex="0" aria-label="Датчик температуры: 22.8 градуса"><circle cx="1030" cy="890" r="20"/><text x="1030" y="897">⌁</text><title>Температура: 22.8°</title></g>
                 </g>
               </svg>
               <div class="map-legend"><span><i class="legend-light"></i>Свет</span><span><i class="legend-vacuum"></i>Пылесос</span><span><i class="legend-sensor"></i>Датчик</span></div>
