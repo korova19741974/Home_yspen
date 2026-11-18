@@ -95,7 +95,7 @@
 
           <div class="map-layout">
             <article class="floorplan-card">
-              <div class="plan-meta"><span class="floor-label">2 этаж</span><span>Нажмите на комнату или устройство</span><button class="map-reset" id="map-reset" type="button">Весь этаж</button></div>
+              <div class="plan-meta"><span class="floor-label">2 этаж</span><span>Нажмите на комнату — основной свет; на маркер — отдельный источник</span></div>
               <div class="lighting-presets" aria-label="Варианты освещения второго этажа"><span>Свет на плане</span><button class="light-preset" type="button" data-light-preset="off">Ночь</button><button class="light-preset" type="button" data-light-preset="work">Рабочий</button><button class="light-preset" type="button" data-light-preset="evening">Вечер</button><button class="light-preset" type="button" data-light-preset="all">Весь этаж</button></div>
               <svg class="floor-map hidden" id="floor-1" viewBox="0 0 760 520" role="img" aria-label="План первого этажа">
                 <path class="outer-wall" d="M45 95H75V62H190V82H245V40H396V86H452V112H640V258H692V455H455V480H225V446H62V380H38Z" />
@@ -203,6 +203,31 @@
                   <rect class="floor-room photo-room" data-room="f2-guest" x="42" y="350" width="420" height="650"/>
                   <rect class="floor-room photo-room" data-room="f2-bath" x="650" y="425" width="420" height="280"/>
                   <rect class="floor-room photo-room" data-room="f2-office" x="650" y="715" width="420" height="330"/>
+                </g>
+                <g class="light-pools" pointer-events="none">
+                  <ellipse class="light-pool" data-light-pool="f2-bedroom-main" cx="245" cy="170" rx="170" ry="120"/>
+                  <circle class="light-pool" data-light-pool="f2-bed-lamp-1" cx="92" cy="115" r="64"/><circle class="light-pool" data-light-pool="f2-bed-lamp-2" cx="92" cy="265" r="64"/>
+                  <ellipse class="light-pool" data-light-pool="f2-closet-light" cx="560" cy="150" rx="105" ry="100"/>
+                  <ellipse class="light-pool" data-light-pool="f2-stairs-light" cx="860" cy="175" rx="175" ry="115"/>
+                  <ellipse class="light-pool" data-light-pool="f2-laundry-light" cx="940" cy="325" rx="115" ry="80"/>
+                  <ellipse class="light-pool" data-light-pool="f2-guest-main" cx="250" cy="640" rx="180" ry="190"/>
+                  <rect class="light-pool wardrobe-pool" data-light-pool="f2-guest-wardrobe" x="75" y="360" width="385" height="70" rx="12"/>
+                  <ellipse class="light-pool" data-light-pool="f2-bath-main" cx="855" cy="570" rx="180" ry="120"/>
+                  <rect class="light-pool mirror-pool" data-light-pool="f2-bath-mirror" x="690" y="455" width="210" height="48" rx="8"/>
+                  <ellipse class="light-pool" data-light-pool="f2-office-light" cx="865" cy="865" rx="180" ry="145"/>
+                </g>
+                <g class="light-hotspots">
+                  <g class="light-hotspot" data-map-toggle="f2-bedroom-main" data-light-device="f2-bedroom-main" tabindex="0" role="button" aria-label="Основной свет главной спальни"><circle class="hotspot-halo" cx="245" cy="95" r="23"/><circle class="hotspot-core" cx="245" cy="95" r="8"/></g>
+                  <g class="light-hotspot mini" data-map-toggle="f2-bed-lamp-1" data-light-device="f2-bed-lamp-1" tabindex="0" role="button" aria-label="Лампа у кровати сверху"><circle class="hotspot-halo" cx="92" cy="115" r="18"/><circle class="hotspot-core" cx="92" cy="115" r="6"/></g>
+                  <g class="light-hotspot mini" data-map-toggle="f2-bed-lamp-2" data-light-device="f2-bed-lamp-2" tabindex="0" role="button" aria-label="Лампа у кровати снизу"><circle class="hotspot-halo" cx="92" cy="265" r="18"/><circle class="hotspot-core" cx="92" cy="265" r="6"/></g>
+                  <g class="light-hotspot" data-map-toggle="f2-closet-light" data-light-device="f2-closet-light" tabindex="0" role="button" aria-label="Свет гардеробной"><circle class="hotspot-halo" cx="560" cy="92" r="23"/><circle class="hotspot-core" cx="560" cy="92" r="8"/></g>
+                  <g class="light-hotspot" data-map-toggle="f2-stairs-light" data-light-device="f2-stairs-light" tabindex="0" role="button" aria-label="Свет лестницы"><circle class="hotspot-halo" cx="870" cy="95" r="23"/><circle class="hotspot-core" cx="870" cy="95" r="8"/></g>
+                  <g class="light-hotspot mini" data-map-toggle="f2-laundry-light" data-light-device="f2-laundry-light" tabindex="0" role="button" aria-label="Свет постирочной"><circle class="hotspot-halo" cx="955" cy="280" r="18"/><circle class="hotspot-core" cx="955" cy="280" r="6"/></g>
+                  <g class="light-hotspot" data-map-toggle="f2-guest-main" data-light-device="f2-guest-main" tabindex="0" role="button" aria-label="Основной свет спальни с зелёным шкафом"><circle class="hotspot-halo" cx="255" cy="500" r="23"/><circle class="hotspot-core" cx="255" cy="500" r="8"/></g>
+                  <g class="light-hotspot mini" data-map-toggle="f2-guest-wardrobe" data-light-device="f2-guest-wardrobe" tabindex="0" role="button" aria-label="Подсветка зелёного шкафа"><circle class="hotspot-halo" cx="422" cy="395" r="18"/><circle class="hotspot-core" cx="422" cy="395" r="6"/></g>
+                  <g class="light-hotspot" data-map-toggle="f2-bath-main" data-light-device="f2-bath-main" tabindex="0" role="button" aria-label="Основной свет ванной"><circle class="hotspot-halo" cx="930" cy="530" r="23"/><circle class="hotspot-core" cx="930" cy="530" r="8"/></g>
+                  <g class="light-hotspot mirror-hotspot" data-map-toggle="f2-bath-mirror" data-light-device="f2-bath-mirror" tabindex="0" role="button" aria-label="Подсветка зеркала"><rect class="hotspot-halo" x="765" y="463" width="68" height="22" rx="8"/><rect class="hotspot-core" x="781" y="470" width="36" height="8" rx="4"/></g>
+                  <g class="light-hotspot" data-map-toggle="f2-office-light" data-light-device="f2-office-light" tabindex="0" role="button" aria-label="Свет кабинета"><circle class="hotspot-halo" cx="850" cy="760" r="23"/><circle class="hotspot-core" cx="850" cy="760" r="8"/></g>
                 </g>
               </svg>
               <div class="map-legend"><span><i class="legend-light"></i>Свет</span><span><i class="legend-vacuum"></i>Пылесос</span><span><i class="legend-sensor"></i>Датчик</span></div>
