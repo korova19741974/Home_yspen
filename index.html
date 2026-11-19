@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#0b1020" />
     <meta name="description" content="Личная панель управления умным домом" />
     <link rel="manifest" href="./manifest.webmanifest" />
-    <link rel="stylesheet" href="./styles.css?v=14" />
+    <link rel="stylesheet" href="./styles.css?v=15" />
     <title>Мой дом</title>
   </head>
   <body>
@@ -183,9 +183,12 @@
                   <rect class="light-zone" data-map-toggle="f2-bath-mirror" tabindex="0" role="button" aria-label="Подсветка зеркала" x="685" y="435" width="260" height="105"><title>Подсветка зеркала</title></rect>
                 </g>
                 <g id="tv-screen" class="tv-screen" aria-hidden="true">
-                  <rect class="tv-screen-frame" x="67" y="752" width="56" height="76" rx="4"/>
-                  <rect class="tv-screen-glow" x="72" y="757" width="46" height="64" rx="2"/>
+                  <rect class="tv-screen-ambient" x="56" y="775" width="70" height="145" rx="8"/>
+                  <rect class="tv-screen-frame" x="63" y="787" width="54" height="126" rx="4"/>
+                  <rect class="tv-screen-glow" x="68" y="793" width="44" height="114" rx="2"/>
+                  <path class="tv-screen-reflection" d="M73 798h34l-34 55Z"/>
                 </g>
+                <rect class="tv-screen-hit" data-room-select="f2-guest" x="61" y="785" width="58" height="130" rx="5" tabindex="0" role="button" aria-label="Телевизор в спальне"/>
                 <g id="aircon-flow" class="aircon-flow" aria-hidden="true">
                   <path d="M92 520 C145 530 190 555 238 590"/>
                   <path d="M92 538 C150 550 198 578 250 615"/>
@@ -199,12 +202,12 @@
                     <rect class="vacuum-robot-front" x="657" y="856" width="56" height="17" rx="8"/>
                     <circle class="vacuum-robot-lidar" cx="685" cy="850" r="7"/>
                     <circle class="vacuum-robot-lidar-dot" cx="685" cy="850" r="2"/>
+                    <path class="vacuum-robot-brush" d="M661 876l-8 8m12-4-3 10m41-14 8 8m-12-4 3 10"/>
                   </g>
                 </g>
                 <path id="vacuum-route-line" class="vacuum-route-line" d="M685 865 L760 900 L850 1000 L930 900 L850 820 L700 760 L650 680 L760 620 L900 560 L1000 620 L900 680 L700 600 L700 500 L850 450 L950 430 L1050 450 L1050 350 L900 350 L850 450 L700 500 L600 300 L700 300 L700 220 L600 220 L450 350 L450 250 L400 100 L300 100 L300 250 L450 350 L600 400 L600 600 L450 500 L350 470 L100 470 L70 600 L70 1050 L200 1080 L450 1080 L500 900 L500 750 L600 760 L685 865" aria-hidden="true"/>
                 <g class="equipment-markers">
                   <g class="equipment-marker" data-map-toggle="f2-aircon" data-device-state="f2-aircon" tabindex="0" role="button" aria-label="Кондиционер спальни"><circle cx="72" cy="505" r="22"/><text x="72" y="512">❄</text><title>Кондиционер</title></g>
-                  <g class="equipment-marker tv-marker" data-room-select="f2-guest" data-device-state="f2-tv" tabindex="0" role="button" aria-label="Телевизор в главной спальне"><circle cx="95" cy="790" r="22"/><text x="95" y="797">▣</text><title>Телевизор</title></g>
                   <g id="vacuum-2-marker" class="equipment-marker vacuum-marker" data-map-vacuum="vacuum-2" tabindex="0" role="button" aria-label="Робот-пылесос второго этажа"><circle cx="640" cy="865" r="24"/><text x="640" y="873">✦</text><title>Робот-пылесос</title></g>
                   <g class="equipment-marker sensor-marker" tabindex="0" aria-label="Датчик протечки: сухо"><circle cx="1030" cy="625" r="20"/><text x="1030" y="632">◈</text><title>Датчик протечки: сухо</title></g>
                   <g class="equipment-marker sensor-marker" tabindex="0" aria-label="Датчик температуры: 22.8 градуса"><circle cx="1030" cy="890" r="20"/><text x="1030" y="897">⌁</text><title>Температура: 22.8°</title></g>
