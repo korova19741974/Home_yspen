@@ -61,13 +61,17 @@ button { cursor:pointer; }
 #floor-2 .aircon-flow path:nth-child(3){animation-delay:-.56s;opacity:.58}
 @keyframes air-flow{to{stroke-dashoffset:-64}}
 #floor-2 .vacuum-robot{opacity:0;pointer-events:none;transform-box:fill-box;transform-origin:center}
-#floor-2 .vacuum-robot.is-cleaning{opacity:1;animation:vacuum-route 45s ease-in-out infinite}
+#floor-2 .vacuum-robot.is-cleaning{opacity:1;animation:vacuum-route 70s linear infinite}
 #floor-2 .vacuum-robot-shadow{fill:#0008;filter:blur(3px)}
-#floor-2 .vacuum-robot-body>ellipse{fill:#f8fbff;stroke:#b5c3d3;stroke-width:2}
+#floor-2 .vacuum-robot-shell{fill:#f8fbff;stroke:#b5c3d3;stroke-width:2}
+#floor-2 .vacuum-robot-top{fill:#eef3f7;stroke:#c3ced9;stroke-width:1}
 #floor-2 .vacuum-robot-front{fill:#1b2733}
 #floor-2 .vacuum-robot-lidar{fill:#ec6a31;stroke:#ffbd83;stroke-width:2}
+#floor-2 .vacuum-robot-lidar-dot{fill:#5c2417}
 @keyframes vacuum-route{0%,3%{transform:translate(0,0)}6%{transform:translate(75px,35px)}9%{transform:translate(165px,135px)}12%{transform:translate(245px,35px)}15%{transform:translate(165px,-45px)}18%{transform:translate(15px,-105px)}21%{transform:translate(-35px,-185px)}24%{transform:translate(75px,-245px)}27%{transform:translate(215px,-305px)}30%{transform:translate(315px,-245px)}33%{transform:translate(215px,-185px)}36%{transform:translate(15px,-265px)}39%{transform:translate(165px,-415px)}42%{transform:translate(265px,-435px)}45%{transform:translate(365px,-415px)}48%{transform:translate(365px,-515px)}51%{transform:translate(215px,-515px)}54%{transform:translate(165px,-415px)}57%{transform:translate(-85px,-565px)}60%{transform:translate(15px,-565px)}63%{transform:translate(15px,-645px)}66%{transform:translate(-85px,-645px)}69%{transform:translate(-235px,-515px)}72%{transform:translate(-235px,-615px)}75%{transform:translate(-285px,-765px)}78%{transform:translate(-385px,-765px)}81%{transform:translate(-385px,-615px)}84%{transform:translate(-235px,-515px)}87%{transform:translate(-85px,-365px)}90%{transform:translate(-185px,-115px)}93%{transform:translate(-185px,-115px)}96%{transform:translate(-85px,-105px)}98%{transform:translate(-85px,-105px)}99%{transform:translate(0,-105px)}100%{transform:translate(0,0)}}
-#floor-2 .vacuum-route-line{fill:none;stroke:#73c6ff;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:8 16;opacity:0;pointer-events:none;filter:drop-shadow(0 0 5px #64c6ff)}
+#floor-2 .vacuum-route-line{display:none!important}
 #floor-2 .vacuum-route-line.is-cleaning{opacity:.34;animation:route-dash 2.2s linear infinite}
 @keyframes route-dash{to{stroke-dashoffset:-48}}
+#floor-2 .tv-countdown{display:inline-flex;align-items:center;min-width:64px;justify-content:center;padding:5px 8px;border:1px solid #6073a8;border-radius:8px;background:#18233d;color:#b9d2ff;font-size:.72rem;font-variant-numeric:tabular-nums}
+#floor-2 .tv-timer-select{height:31px;padding:0 7px;border:1px solid #55678e;border-radius:8px;background:#111a2c;color:#dbe7ff;font-size:.72rem}
 #floor-2 .vacuum-marker.is-cleaning{animation:none;transform:none}

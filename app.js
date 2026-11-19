@@ -294,6 +294,7 @@ const roomPanel = document.querySelector("#room-panel"),
   vacuumModal = document.querySelector("#vacuum-modal"),
   cameraModal = document.querySelector("#camera-modal");
 let tvTimerHandle = null;
+let tvTimerTicker = null;
 function save() {
   localStorage.setItem("home-dashboard-demo", JSON.stringify(state));
 }
@@ -327,8 +328,15 @@ function tvTimerText() {
   const remaining = Math.max(0, offAt - Date.now());
   return remaining ? ` · таймер ${Math.ceil(remaining / 60000)} мин` : "";
 }
+function tvTimerCountdown() {
+  const offAt = state.tvTimers["f2-tv"];
+  if (!offAt) return "—";
+  const seconds = Math.ceil(Math.max(0, offAt - Date.now()) / 1000);
+  return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, "0")}`;
+}
 function syncTvTimer() {
   clearTimeout(tvTimerHandle);
+  clearInterval(tvTimerTicker);
   const offAt = state.tvTimers["f2-tv"];
   if (!offAt) return;
   const remaining = offAt - Date.now();
@@ -345,6 +353,11 @@ function syncTvTimer() {
     render();
     showToast("Телевизор второго этажа выключен по таймеру");
   }, remaining);
+  tvTimerTicker = setInterval(() => {
+    document.querySelectorAll("[data-tv-countdown]").forEach((el) => {
+      el.textContent = tvTimerCountdown();
+    });
+  }, 1000);
 }
 function toggleTv() {
   state.devices["f2-tv"] = !isOn("f2-tv");
@@ -369,7 +382,7 @@ function renderRoomPanel() {
       if (d.kind === "vacuum")
         return `<div class="control-row"><span class="control-icon">${d.icon}</span><span class="control-copy"><strong>${d.name}</strong><small>${displayVacuum(d.id)} · ${state.vacuums[d.id].cleaning}</small></span><button class="device-action" data-vacuum-settings="${d.id}">Настроить</button></div>`;
       if (d.kind === "tv")
-        return `<div class="control-row tv-control-row"><span class="control-icon">${d.icon}</span><span class="control-copy"><strong>${d.name}</strong><small>${isOn(d.id) ? "Включён" : "Выключен"}${tvTimerText()} · демо</small></span><button class="toggle ${isOn(d.id) ? "on" : ""}" data-tv-toggle="${d.id}" aria-label="Включить или выключить телевизор"><span></span></button><button class="device-action" data-tv-timer="30">Через 30 мин</button></div>`;
+        return `<div class="control-row tv-control-row"><span class="control-icon">${d.icon}</span><span class="control-copy"><strong>${d.name}</strong><small>${isOn(d.id) ? "Включён" : "Выключен"} · таймер отключения</small></span><button class="toggle ${isOn(d.id) ? "on" : ""}" data-tv-toggle="${d.id}" aria-label="Включить или выключить телевизор"><span></span></button><select class="tv-timer-select" data-tv-timer-select="${d.id}" aria-label="Время до отключения"><option value="1">1 мин</option>${Array.from({length: 12}, (_, i) => (i + 1) * 10).map((m) => `<option value="${m}" ${m === 60 ? "selected" : ""}>${m} мин</option>`).join("")}</select><button class="device-action" data-tv-timer="60">Старт</button><span class="tv-countdown" data-tv-countdown>${tvTimerCountdown()}</span></div>`;
       if (d.kind === "speaker")
         return `<div class="control-row"><span class="control-icon">${d.icon}</span><span class="control-copy"><strong>${d.name}</strong><small>Яндекс Музыка · тестовый режим</small></span><button class="device-action" data-music="${d.id}">Играть</button></div>`;
       if (d.kind === "camera")
@@ -535,7 +548,10 @@ document.addEventListener("click", (e) => {
   const tvToggle = e.target.closest("[data-tv-toggle]");
   if (tvToggle) return toggleTv();
   const tvTimer = e.target.closest("[data-tv-timer]");
-  if (tvTimer) return setTvTimer(Number(tvTimer.dataset.tvTimer) || 30);
+  if (tvTimer) {
+    const select = tvTimer.closest(".tv-control-row")?.querySelector("[data-tv-timer-select]");
+    return setTvTimer(Number(select?.value) || 60);
+  }
   const room = e.target.closest(".floor-room");
   if (room) {
     selectedRoom = room.dataset.room;
@@ -630,5 +646,5 @@ document.addEventListener("keydown", (e) => {
   control.click();
 });
 if ("serviceWorker" in navigator)
-  navigator.serviceWorker.register("./service-worker.js?v=13").catch(() => {});
+  navigator.serviceWorker.register("./service-worker.js?v=14").catch(() => {});
 render();

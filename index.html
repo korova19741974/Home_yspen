@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#0b1020" />
     <meta name="description" content="Личная панель управления умным домом" />
     <link rel="manifest" href="./manifest.webmanifest" />
-    <link rel="stylesheet" href="./styles.css?v=13" />
+    <link rel="stylesheet" href="./styles.css?v=14" />
     <title>Мой дом</title>
   </head>
   <body>
@@ -194,9 +194,11 @@
                 <g id="vacuum-2-robot" class="vacuum-robot" aria-hidden="true">
                   <ellipse class="vacuum-robot-shadow" cx="685" cy="889" rx="34" ry="9"/>
                   <g class="vacuum-robot-body">
-                    <ellipse cx="685" cy="865" rx="31" ry="22"/>
+                    <ellipse class="vacuum-robot-shell" cx="685" cy="865" rx="31" ry="22"/>
+                    <ellipse class="vacuum-robot-top" cx="685" cy="861" rx="24" ry="15"/>
                     <rect class="vacuum-robot-front" x="657" y="856" width="56" height="17" rx="8"/>
                     <circle class="vacuum-robot-lidar" cx="685" cy="850" r="7"/>
+                    <circle class="vacuum-robot-lidar-dot" cx="685" cy="850" r="2"/>
                   </g>
                 </g>
                 <path id="vacuum-route-line" class="vacuum-route-line" d="M685 865 L760 900 L850 1000 L930 900 L850 820 L700 760 L650 680 L760 620 L900 560 L1000 620 L900 680 L700 600 L700 500 L850 450 L950 430 L1050 450 L1050 350 L900 350 L850 450 L700 500 L600 300 L700 300 L700 220 L600 220 L450 350 L450 250 L400 100 L300 100 L300 250 L450 350 L600 400 L600 600 L450 500 L350 470 L100 470 L70 600 L70 1050 L200 1080 L450 1080 L500 900 L500 750 L600 760 L685 865" aria-hidden="true"/>
