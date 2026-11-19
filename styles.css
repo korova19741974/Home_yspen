@@ -53,7 +53,7 @@ button { cursor:pointer; }
 #floor-2 .tv-screen-hit:focus{outline:none;stroke:#74bfff;stroke-width:2}
 #floor-2 .tv-screen-ambient{fill:#63b9ff;opacity:.12;filter:blur(8px)}
 #floor-2 .tv-screen-frame{fill:#080b12;stroke:#252b36;stroke-width:2}
-#floor-2 .tv-screen-glow{fill:#86bfff;filter:drop-shadow(0 0 11px #64b4ff);animation:tv-screen-flicker 2.4s ease-in-out infinite}
+#floor-2 .tv-screen-glow{fill:url(#tv-live);filter:drop-shadow(0 0 9px #64b4ff);animation:tv-screen-flicker 2.4s ease-in-out infinite}
 #floor-2 .tv-screen-reflection{fill:#fff;opacity:.14}
 @keyframes tv-screen-flicker{0%,100%{opacity:.72}45%{opacity:1}60%{opacity:.82}}
 #floor-2 .tv-marker.is-on circle{fill:#29213d;stroke:#8b789f;filter:none;opacity:.55}

@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#0b1020" />
     <meta name="description" content="Личная панель управления умным домом" />
     <link rel="manifest" href="./manifest.webmanifest" />
-    <link rel="stylesheet" href="./styles.css?v=17" />
+    <link rel="stylesheet" href="./styles.css?v=18" />
     <title>Мой дом</title>
   </head>
   <body>
@@ -113,6 +113,7 @@
                   <pattern id="wood-floor" width="32" height="32" patternUnits="userSpaceOnUse"><rect width="32" height="32" fill="#37281e"/><path d="M0 8h32M0 24h32M16 8v16" stroke="#594230" stroke-width="1" opacity=".7"/></pattern>
                   <pattern id="tile-floor" width="32" height="32" patternUnits="userSpaceOnUse"><rect width="32" height="32" fill="#403c3d"/><path d="M0 0h32v32H0z" fill="none" stroke="#82746f" stroke-width="2" opacity=".8"/></pattern>
                   <linearGradient id="green-closet" x1="0" x2="1"><stop stop-color="#213e32"/><stop offset="1" stop-color="#47674f"/></linearGradient>
+                  <linearGradient id="tv-live" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#1d4e89"/><stop offset=".38" stop-color="#4aa8e8"/><stop offset=".68" stop-color="#7358c8"/><stop offset="1" stop-color="#172f58"/></linearGradient>
                   <clipPath id="clip-office"><path d="M580 680H1157V1180H580Z"/></clipPath>
                   <clipPath id="clip-bedroom-top"><path d="M25 20H510V440H25Z"/></clipPath>
                   <clipPath id="clip-closet"><path d="M465 20H755V350H465Z"/></clipPath>
@@ -185,8 +186,8 @@
                 <g id="tv-screen" class="tv-screen" aria-hidden="true">
                   <polygon class="tv-screen-ambient" points="82,782 131,816 131,948 82,916"/>
                   <polygon class="tv-screen-frame" points="88,790 126,818 126,940 88,910"/>
-                  <polygon class="tv-screen-glow" points="92,797 122,820 122,934 92,908"/>
-                  <path class="tv-screen-reflection" d="M95 802l23 17-23 44Z"/>
+                  <polygon class="tv-screen-glow" points="90,793 124,819 124,938 90,910"/>
+                  <path class="tv-screen-reflection" d="M93 798l28 21-28 50Z"/>
                 </g>
                 <path class="tv-screen-hit" data-tv-menu d="M86 788L128 817V943L86 913Z" tabindex="0" role="button" aria-label="Управление телевизором в спальне"/>
                 <g id="aircon-flow" class="aircon-flow" aria-hidden="true">
@@ -195,14 +196,14 @@
                   <path d="M92 556 C145 570 185 600 225 635"/>
                 </g>
                 <g id="vacuum-2-robot" class="vacuum-robot" aria-hidden="true">
-                  <ellipse class="vacuum-robot-shadow" cx="685" cy="891" rx="39" ry="10"/>
+                  <ellipse class="vacuum-robot-shadow" cx="685" cy="882" rx="27" ry="7"/>
                   <g class="vacuum-robot-body">
-                    <ellipse class="vacuum-robot-shell" cx="685" cy="864" rx="38" ry="27"/>
-                    <ellipse class="vacuum-robot-top" cx="685" cy="860" rx="30" ry="20"/>
-                    <path class="vacuum-robot-front" d="M650 866Q685 889 720 866L717 878Q685 895 653 878Z"/>
-                    <circle class="vacuum-robot-lidar" cx="685" cy="846" r="9"/>
-                    <circle class="vacuum-robot-lidar-dot" cx="685" cy="846" r="3"/>
-                    <path class="vacuum-robot-brush" d="M655 878l-9 8m14-4-4 10m50-14 9 8m-14-4 4 10"/>
+                    <ellipse class="vacuum-robot-shell" cx="685" cy="864" rx="26" ry="18"/>
+                    <ellipse class="vacuum-robot-top" cx="685" cy="861" rx="20" ry="13"/>
+                    <path class="vacuum-robot-front" d="M661 866Q685 881 709 866L707 874Q685 885 663 874Z"/>
+                    <circle class="vacuum-robot-lidar" cx="685" cy="852" r="6"/>
+                    <circle class="vacuum-robot-lidar-dot" cx="685" cy="852" r="2"/>
+                    <path class="vacuum-robot-brush" d="M664 873l-7 6m10-3-3 7m39-10 7 6m-10-3 3 7"/>
                   </g>
                 </g>
                 <path id="vacuum-route-line" class="vacuum-route-line" d="M685 865 L760 900 L850 1000 L930 900 L850 820 L700 760 L650 680 L760 620 L900 560 L1000 620 L900 680 L700 600 L700 500 L850 450 L950 430 L1050 450 L1050 350 L900 350 L850 450 L700 500 L600 300 L700 300 L700 220 L600 220 L450 350 L450 250 L400 100 L300 100 L300 250 L450 350 L600 400 L600 600 L450 500 L350 470 L100 470 L70 600 L70 1050 L200 1080 L450 1080 L500 900 L500 750 L600 760 L685 865" aria-hidden="true"/>
@@ -240,6 +241,6 @@
     <dialog class="settings-modal" id="vacuum-modal"></dialog>
     <dialog class="settings-modal" id="tv-modal"></dialog>
     <dialog class="settings-modal" id="camera-modal"></dialog>
-    <script src="./app.js?v=17"></script>
+    <script src="./app.js?v=18"></script>
   </body>
 </html>
