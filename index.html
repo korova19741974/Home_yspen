@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#0b1020" />
     <meta name="description" content="Личная панель управления умным домом" />
     <link rel="manifest" href="./manifest.webmanifest" />
-    <link rel="stylesheet" href="./styles.css?v=10" />
+    <link rel="stylesheet" href="./styles.css?v=11" />
     <title>Мой дом</title>
   </head>
   <body>
@@ -197,9 +197,27 @@
                   <path class="light-zone" data-map-toggle="f2-bed-lamp-2" tabindex="0" role="button" aria-label="Нижняя прикроватная лампа" d="M350 800H525V1080H330V865Z"><title>Нижняя прикроватная лампа</title></path>
                   <rect class="light-zone" data-map-toggle="f2-bath-mirror" tabindex="0" role="button" aria-label="Подсветка зеркала" x="685" y="435" width="260" height="105"><title>Подсветка зеркала</title></rect>
                 </g>
+                <g id="tv-screen" class="tv-screen" aria-hidden="true">
+                  <rect class="tv-screen-frame" x="67" y="752" width="56" height="76" rx="4"/>
+                  <rect class="tv-screen-glow" x="72" y="757" width="46" height="64" rx="2"/>
+                </g>
+                <g id="aircon-flow" class="aircon-flow" aria-hidden="true">
+                  <path d="M92 520 C145 530 190 555 238 590"/>
+                  <path d="M92 538 C150 550 198 578 250 615"/>
+                  <path d="M92 556 C145 570 185 600 225 635"/>
+                </g>
+                <g id="vacuum-2-robot" class="vacuum-robot" aria-hidden="true">
+                  <ellipse class="vacuum-robot-shadow" cx="685" cy="889" rx="34" ry="9"/>
+                  <g class="vacuum-robot-body">
+                    <ellipse cx="685" cy="865" rx="31" ry="22"/>
+                    <rect class="vacuum-robot-front" x="657" y="856" width="56" height="17" rx="8"/>
+                    <circle class="vacuum-robot-lidar" cx="685" cy="850" r="7"/>
+                  </g>
+                </g>
+                <path id="vacuum-route-line" class="vacuum-route-line" d="M685 865 C650 820 625 760 650 700 C690 650 760 650 820 620 C900 580 950 500 970 390 C900 300 780 240 650 220 C520 200 300 200 220 260 C220 420 260 560 260 700 C350 720 470 760 600 820 C650 840 680 850 685 865" aria-hidden="true"/>
                 <g class="equipment-markers">
                   <g class="equipment-marker" data-map-toggle="f2-aircon" data-device-state="f2-aircon" tabindex="0" role="button" aria-label="Кондиционер спальни"><circle cx="72" cy="505" r="22"/><text x="72" y="512">❄</text><title>Кондиционер</title></g>
-                  <g class="equipment-marker tv-marker" data-room-select="f2-guest" tabindex="0" role="button" aria-label="Телевизор в главной спальне"><circle cx="95" cy="790" r="22"/><text x="95" y="797">▣</text><title>Телевизор</title></g>
+                  <g class="equipment-marker tv-marker" data-room-select="f2-guest" data-device-state="f2-tv" tabindex="0" role="button" aria-label="Телевизор в главной спальне"><circle cx="95" cy="790" r="22"/><text x="95" y="797">▣</text><title>Телевизор</title></g>
                   <g id="vacuum-2-marker" class="equipment-marker vacuum-marker" data-map-vacuum="vacuum-2" tabindex="0" role="button" aria-label="Робот-пылесос второго этажа"><circle cx="640" cy="865" r="24"/><text x="640" y="873">✦</text><title>Робот-пылесос</title></g>
                   <g class="equipment-marker sensor-marker" tabindex="0" aria-label="Датчик протечки: сухо"><circle cx="1030" cy="625" r="20"/><text x="1030" y="632">◈</text><title>Датчик протечки: сухо</title></g>
                   <g class="equipment-marker sensor-marker" tabindex="0" aria-label="Датчик температуры: 22.8 градуса"><circle cx="1030" cy="890" r="20"/><text x="1030" y="897">⌁</text><title>Температура: 22.8°</title></g>
@@ -231,6 +249,6 @@
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <dialog class="settings-modal" id="vacuum-modal"></dialog>
     <dialog class="settings-modal" id="camera-modal"></dialog>
-    <script src="./app.js?v=10"></script>
+    <script src="./app.js?v=11"></script>
   </body>
 </html>

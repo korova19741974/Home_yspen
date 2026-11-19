@@ -428,11 +428,13 @@ function renderMap() {
     );
   });
   const vacuumMarker = document.querySelector("#vacuum-2-marker");
+  const vacuumCleaning = state.vacuums["vacuum-2"].state === "Убирает";
   if (vacuumMarker)
-    vacuumMarker.classList.toggle(
-      "is-cleaning",
-      state.vacuums["vacuum-2"].state === "Убирает",
-    );
+    vacuumMarker.classList.toggle("is-cleaning", vacuumCleaning);
+  document.querySelector("#vacuum-2-robot")?.classList.toggle("is-cleaning", vacuumCleaning);
+  document.querySelector("#vacuum-route-line")?.classList.toggle("is-cleaning", vacuumCleaning);
+  document.querySelector("#aircon-flow")?.classList.toggle("is-on", isOn("f2-aircon"));
+  document.querySelector("#tv-screen")?.classList.toggle("is-on", isOn("f2-tv"));
 }
 function renderSummary() {
   document.querySelector("#lights-count").textContent = Object.values(

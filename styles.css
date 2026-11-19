@@ -47,3 +47,26 @@ button { cursor:pointer; }
 #floor-2 .temperature-readout rect{fill:#111a2ae8;stroke:#70bcff;stroke-width:2;filter:drop-shadow(0 4px 8px #0009)}
 #floor-2 .temperature-readout-title{fill:#8fc9ff;font-size:12px;font-weight:800;letter-spacing:1.4px}
 #floor-2 .temperature-readout-value{fill:#f4f7ff;font-size:16px;font-weight:750}
+#floor-2 .tv-screen{opacity:0;pointer-events:none;transition:opacity .28s ease}
+#floor-2 .tv-screen.is-on{opacity:1}
+#floor-2 .tv-screen-frame{fill:#080b12;stroke:#8b93a6;stroke-width:2}
+#floor-2 .tv-screen-glow{fill:#86bfff;filter:drop-shadow(0 0 12px #64b4ff);animation:tv-screen-flicker 2.4s ease-in-out infinite}
+@keyframes tv-screen-flicker{0%,100%{opacity:.72}45%{opacity:1}60%{opacity:.82}}
+#floor-2 .tv-marker.is-on circle{fill:#33265a;stroke:#c59cff;filter:drop-shadow(0 0 10px #b48aff99)}
+#floor-2 .aircon-flow{opacity:0;pointer-events:none;transition:opacity .3s ease}
+#floor-2 .aircon-flow.is-on{opacity:1}
+#floor-2 .aircon-flow path{fill:none;stroke:#9cdbff;stroke-width:6;stroke-linecap:round;stroke-dasharray:14 18;filter:drop-shadow(0 0 7px #64c6ff);animation:air-flow 1.3s linear infinite}
+#floor-2 .aircon-flow path:nth-child(2){animation-delay:-.28s;opacity:.78}
+#floor-2 .aircon-flow path:nth-child(3){animation-delay:-.56s;opacity:.58}
+@keyframes air-flow{to{stroke-dashoffset:-64}}
+#floor-2 .vacuum-robot{opacity:0;pointer-events:none;transform-box:fill-box;transform-origin:center}
+#floor-2 .vacuum-robot.is-cleaning{opacity:1;animation:vacuum-route 12s ease-in-out infinite}
+#floor-2 .vacuum-robot-shadow{fill:#0008;filter:blur(3px)}
+#floor-2 .vacuum-robot-body>ellipse{fill:#f8fbff;stroke:#b5c3d3;stroke-width:2}
+#floor-2 .vacuum-robot-front{fill:#1b2733}
+#floor-2 .vacuum-robot-lidar{fill:#ec6a31;stroke:#ffbd83;stroke-width:2}
+@keyframes vacuum-route{0%,8%{transform:translate(0,0)}16%{transform:translate(-35px,-215px)}24%{transform:translate(135px,-245px)}32%{transform:translate(285px,-475px)}40%{transform:translate(170px,-645px)}48%{transform:translate(-105px,-685px)}56%{transform:translate(-435px,-665px)}64%{transform:translate(-465px,-525px)}72%{transform:translate(-440px,-235px)}80%{transform:translate(-425px,-70px)}90%{transform:translate(-250px,0)}100%{transform:translate(0,0)}}
+#floor-2 .vacuum-route-line{fill:none;stroke:#73c6ff;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:8 16;opacity:0;pointer-events:none;filter:drop-shadow(0 0 5px #64c6ff)}
+#floor-2 .vacuum-route-line.is-cleaning{opacity:.34;animation:route-dash 2.2s linear infinite}
+@keyframes route-dash{to{stroke-dashoffset:-48}}
+#floor-2 .vacuum-marker.is-cleaning{animation:none;transform:none}
