@@ -79,4 +79,5 @@ button { cursor:pointer; }
 @keyframes route-dash{to{stroke-dashoffset:-48}}
 #floor-2 .tv-countdown{display:inline-flex;align-items:center;min-width:64px;justify-content:center;padding:5px 8px;border:1px solid #6073a8;border-radius:8px;background:#18233d;color:#b9d2ff;font-size:.72rem;font-variant-numeric:tabular-nums}
 #floor-2 .tv-timer-select{height:31px;padding:0 7px;border:1px solid #55678e;border-radius:8px;background:#111a2c;color:#dbe7ff;font-size:.72rem}
+.tv-modal-timer{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:10px}.tv-modal-timer .modal-primary{flex:0;padding:9px 11px;font-size:.78rem}
 #floor-2 .vacuum-marker.is-cleaning{animation:none;transform:none}

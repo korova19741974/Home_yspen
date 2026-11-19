@@ -292,6 +292,7 @@ const lightPresets = {
 const roomPanel = document.querySelector("#room-panel"),
   toast = document.querySelector("#toast"),
   vacuumModal = document.querySelector("#vacuum-modal"),
+  tvModal = document.querySelector("#tv-modal"),
   cameraModal = document.querySelector("#camera-modal");
 let tvTimerHandle = null;
 let tvTimerTicker = null;
@@ -372,6 +373,11 @@ function setTvTimer(minutes = 30) {
   save();
   render();
   showToast(`Телевизор выключится через ${minutes} минут`);
+}
+function openTvSettings() {
+  const timerActive = Boolean(state.tvTimers["f2-tv"]);
+  tvModal.innerHTML = `<div class="modal-content"><div class="modal-top"><div><p class="eyebrow">ГЛАВНАЯ СПАЛЬНЯ</p><h2>Телевизор</h2><p>${isOn("f2-tv") ? "Экран включён" : "Экран выключен"}${timerActive ? ` · до отключения ${tvTimerCountdown()}` : ""}</p></div><button class="modal-close" data-close-modal="tv-modal">×</button></div><div class="setting-group"><strong>Питание</strong><div class="mode-options"><button class="mode-pill ${isOn("f2-tv") ? "active" : ""}" data-tv-modal-power="on">Включить</button><button class="mode-pill ${!isOn("f2-tv") ? "active" : ""}" data-tv-modal-power="off">Выключить</button></div></div><div class="setting-group"><strong>Отключить через</strong><div class="tv-modal-timer"><select class="tv-timer-select" data-tv-modal-minutes aria-label="Время до отключения"><option value="1">1 минута</option>${Array.from({length: 12}, (_, i) => (i + 1) * 10).map((m) => `<option value="${m}" ${m === 60 ? "selected" : ""}>${m} минут</option>`).join("")}</select><button class="modal-primary" data-tv-modal-timer>Запустить таймер</button>${timerActive ? `<span class="tv-countdown" data-tv-countdown>${tvTimerCountdown()}</span>` : ""}</div></div></div>`;
+  if (!tvModal.open) tvModal.showModal();
 }
 function renderRoomPanel() {
   const room = rooms[selectedRoom];
@@ -544,6 +550,22 @@ vacuumModal.addEventListener("click", (e) => {
     e.stopPropagation();
   }
 });
+tvModal.addEventListener("click", (e) => {
+  const power = e.target.closest("[data-tv-modal-power]");
+  const timer = e.target.closest("[data-tv-modal-timer]");
+  if (power) {
+    state.devices["f2-tv"] = power.dataset.tvModalPower === "on";
+    if (!state.devices["f2-tv"]) state.tvTimers["f2-tv"] = null;
+    save();
+    render();
+    return openTvSettings();
+  }
+  if (timer) {
+    const minutes = Number(tvModal.querySelector("[data-tv-modal-minutes]")?.value) || 60;
+    setTvTimer(minutes);
+    return openTvSettings();
+  }
+});
 document.addEventListener("click", (e) => {
   const tvToggle = e.target.closest("[data-tv-toggle]");
   if (tvToggle) return toggleTv();
@@ -623,9 +645,11 @@ document.addEventListener("click", (e) => {
 document.addEventListener("click", (e) => {
   const mapLight = e.target.closest("[data-map-toggle]"),
     mapVacuum = e.target.closest("[data-map-vacuum]"),
+    tvMenu = e.target.closest("[data-tv-menu]"),
     roomSelect = e.target.closest("[data-room-select]");
   if (mapLight) toggleMapLight(mapLight.dataset.mapToggle);
   if (mapVacuum) openVacuumSettings(mapVacuum.dataset.mapVacuum);
+  if (tvMenu) openTvSettings();
   if (roomSelect) {
     selectedRoom = roomSelect.dataset.roomSelect;
     activeFloor = 2;
@@ -639,12 +663,12 @@ document.addEventListener("click", (e) => {
 document.addEventListener("keydown", (e) => {
   if (e.key !== "Enter" && e.key !== " ") return;
   const control = e.target.closest(
-    ".photo-room,[data-map-toggle],[data-map-vacuum],[data-room-select]",
+    ".photo-room,[data-map-toggle],[data-map-vacuum],[data-room-select],[data-tv-menu]",
   );
   if (!control) return;
   e.preventDefault();
   control.click();
 });
 if ("serviceWorker" in navigator)
-  navigator.serviceWorker.register("./service-worker.js?v=16").catch(() => {});
+  navigator.serviceWorker.register("./service-worker.js?v=17").catch(() => {});
 render();

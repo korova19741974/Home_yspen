@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#0b1020" />
     <meta name="description" content="Личная панель управления умным домом" />
     <link rel="manifest" href="./manifest.webmanifest" />
-    <link rel="stylesheet" href="./styles.css?v=16" />
+    <link rel="stylesheet" href="./styles.css?v=17" />
     <title>Мой дом</title>
   </head>
   <body>
@@ -183,26 +183,26 @@
                   <rect class="light-zone" data-map-toggle="f2-bath-mirror" tabindex="0" role="button" aria-label="Подсветка зеркала" x="685" y="435" width="260" height="105"><title>Подсветка зеркала</title></rect>
                 </g>
                 <g id="tv-screen" class="tv-screen" aria-hidden="true">
-                  <polygon class="tv-screen-ambient" points="84,784 129,817 129,946 84,915"/>
-                  <polygon class="tv-screen-frame" points="91,794 123,819 123,936 91,909"/>
-                  <polygon class="tv-screen-glow" points="96,804 118,822 118,926 96,905"/>
-                  <path class="tv-screen-reflection" d="M99 809l16 13-16 34Z"/>
+                  <polygon class="tv-screen-ambient" points="82,782 131,816 131,948 82,916"/>
+                  <polygon class="tv-screen-frame" points="88,790 126,818 126,940 88,910"/>
+                  <polygon class="tv-screen-glow" points="92,797 122,820 122,934 92,908"/>
+                  <path class="tv-screen-reflection" d="M95 802l23 17-23 44Z"/>
                 </g>
-                <path class="tv-screen-hit" data-room-select="f2-guest" d="M88 789L126 817V942L88 913Z" tabindex="0" role="button" aria-label="Телевизор в спальне"/>
+                <path class="tv-screen-hit" data-tv-menu d="M86 788L128 817V943L86 913Z" tabindex="0" role="button" aria-label="Управление телевизором в спальне"/>
                 <g id="aircon-flow" class="aircon-flow" aria-hidden="true">
                   <path d="M92 520 C145 530 190 555 238 590"/>
                   <path d="M92 538 C150 550 198 578 250 615"/>
                   <path d="M92 556 C145 570 185 600 225 635"/>
                 </g>
                 <g id="vacuum-2-robot" class="vacuum-robot" aria-hidden="true">
-                  <ellipse class="vacuum-robot-shadow" cx="685" cy="889" rx="34" ry="9"/>
+                  <ellipse class="vacuum-robot-shadow" cx="685" cy="891" rx="39" ry="10"/>
                   <g class="vacuum-robot-body">
-                    <ellipse class="vacuum-robot-shell" cx="685" cy="865" rx="31" ry="22"/>
-                    <ellipse class="vacuum-robot-top" cx="685" cy="861" rx="24" ry="15"/>
-                    <rect class="vacuum-robot-front" x="657" y="856" width="56" height="17" rx="8"/>
-                    <circle class="vacuum-robot-lidar" cx="685" cy="850" r="7"/>
-                    <circle class="vacuum-robot-lidar-dot" cx="685" cy="850" r="2"/>
-                    <path class="vacuum-robot-brush" d="M661 876l-8 8m12-4-3 10m41-14 8 8m-12-4 3 10"/>
+                    <ellipse class="vacuum-robot-shell" cx="685" cy="864" rx="38" ry="27"/>
+                    <ellipse class="vacuum-robot-top" cx="685" cy="860" rx="30" ry="20"/>
+                    <path class="vacuum-robot-front" d="M650 866Q685 889 720 866L717 878Q685 895 653 878Z"/>
+                    <circle class="vacuum-robot-lidar" cx="685" cy="846" r="9"/>
+                    <circle class="vacuum-robot-lidar-dot" cx="685" cy="846" r="3"/>
+                    <path class="vacuum-robot-brush" d="M655 878l-9 8m14-4-4 10m50-14 9 8m-14-4 4 10"/>
                   </g>
                 </g>
                 <path id="vacuum-route-line" class="vacuum-route-line" d="M685 865 L760 900 L850 1000 L930 900 L850 820 L700 760 L650 680 L760 620 L900 560 L1000 620 L900 680 L700 600 L700 500 L850 450 L950 430 L1050 450 L1050 350 L900 350 L850 450 L700 500 L600 300 L700 300 L700 220 L600 220 L450 350 L450 250 L400 100 L300 100 L300 250 L450 350 L600 400 L600 600 L450 500 L350 470 L100 470 L70 600 L70 1050 L200 1080 L450 1080 L500 900 L500 750 L600 760 L685 865" aria-hidden="true"/>
@@ -238,7 +238,8 @@
     </div>
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <dialog class="settings-modal" id="vacuum-modal"></dialog>
+    <dialog class="settings-modal" id="tv-modal"></dialog>
     <dialog class="settings-modal" id="camera-modal"></dialog>
-    <script src="./app.js?v=11"></script>
+    <script src="./app.js?v=17"></script>
   </body>
 </html>
