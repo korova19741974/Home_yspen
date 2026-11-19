@@ -630,5 +630,5 @@ document.addEventListener("keydown", (e) => {
   control.click();
 });
 if ("serviceWorker" in navigator)
-  navigator.serviceWorker.register("./service-worker.js?v=12").catch(() => {});
+  navigator.serviceWorker.register("./service-worker.js?v=13").catch(() => {});
 render();
