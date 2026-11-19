@@ -50,9 +50,9 @@ button { cursor:pointer; }
 #floor-2 .tv-screen{opacity:0;pointer-events:none;transition:opacity .28s ease}
 #floor-2 .tv-screen.is-on{opacity:1}
 #floor-2 .tv-screen-hit{fill:transparent;stroke:transparent;pointer-events:all;cursor:pointer}
-#floor-2 .tv-screen-hit:focus{outline:none;stroke:#74bfff;stroke-width:3}
-#floor-2 .tv-screen-ambient{fill:#63b9ff;opacity:.12;filter:blur(10px)}
-#floor-2 .tv-screen-frame{fill:#080b12;stroke:#252b36;stroke-width:3}
+#floor-2 .tv-screen-hit:focus{outline:none;stroke:#74bfff;stroke-width:2}
+#floor-2 .tv-screen-ambient{fill:#63b9ff;opacity:.12;filter:blur(8px)}
+#floor-2 .tv-screen-frame{fill:#080b12;stroke:#252b36;stroke-width:2}
 #floor-2 .tv-screen-glow{fill:#86bfff;filter:drop-shadow(0 0 11px #64b4ff);animation:tv-screen-flicker 2.4s ease-in-out infinite}
 #floor-2 .tv-screen-reflection{fill:#fff;opacity:.14}
 @keyframes tv-screen-flicker{0%,100%{opacity:.72}45%{opacity:1}60%{opacity:.82}}
@@ -65,7 +65,7 @@ button { cursor:pointer; }
 #floor-2 .aircon-flow path:nth-child(3){animation-delay:-.56s;opacity:.58}
 @keyframes air-flow{to{stroke-dashoffset:-64}}
 #floor-2 .vacuum-robot{opacity:0;pointer-events:none;transform-box:fill-box;transform-origin:center}
-#floor-2 .vacuum-robot.is-cleaning{opacity:1;animation:vacuum-route 1800s linear infinite}
+#floor-2 .vacuum-robot.is-cleaning{opacity:1;animation:vacuum-route 1800s linear 1 forwards}
 #floor-2 .vacuum-robot-shadow{fill:#0008;filter:blur(3px)}
 #floor-2 .vacuum-robot-shell{fill:#f8fbff;stroke:#b5c3d3;stroke-width:2}
 #floor-2 .vacuum-robot-top{fill:#eef3f7;stroke:#c3ced9;stroke-width:1}
@@ -73,7 +73,7 @@ button { cursor:pointer; }
 #floor-2 .vacuum-robot-lidar{fill:#ec6a31;stroke:#ffbd83;stroke-width:2}
 #floor-2 .vacuum-robot-lidar-dot{fill:#5c2417}
 #floor-2 .vacuum-robot-brush{fill:none;stroke:#7b8996;stroke-width:2;stroke-linecap:round}
-@keyframes vacuum-route{0%{transform:translate(0,0)}6.67%{transform:translate(-235px,-565px)}8%{transform:translate(-240px,-765px)}10%{transform:translate(-385px,-765px)}12%{transform:translate(-235px,-765px)}14%{transform:translate(-235px,-665px)}16%{transform:translate(-405px,-665px)}18%{transform:translate(-235px,-665px)}20%{transform:translate(-235px,-565px)}23.33%{transform:translate(0,0)}23.61%{transform:translate(0,0)}30.28%{transform:translate(-180px,-115px)}34%{transform:translate(-585px,-115px)}38%{transform:translate(-585px,185px)}42%{transform:translate(-435px,185px)}46%{transform:translate(-435px,35px)}50%{transform:translate(-585px,35px)}54%{transform:translate(-585px,185px)}58%{transform:translate(-185px,185px)}60%{transform:translate(-185px,-115px)}66.67%{transform:translate(0,0)}66.95%{transform:translate(0,0)}70%{transform:translate(95px,-245px)}72%{transform:translate(265px,-245px)}74%{transform:translate(265px,-135px)}76%{transform:translate(95px,-135px)}80%{transform:translate(-35px,-235px)}83.33%{transform:translate(-35px,-405px)}86%{transform:translate(35px,-405px)}89%{transform:translate(35px,-565px)}92%{transform:translate(-65px,-565px)}94%{transform:translate(-35px,-165px)}96%{transform:translate(195px,-165px)}98%{transform:translate(195px,95px)}99%{transform:translate(15px,95px)}100%{transform:translate(0,0)}}
+@keyframes vacuum-route{0%{transform:translate(0,0)}2%{transform:translate(-35px,-105px)}3.5%{transform:translate(-65px,-265px)}4.5%{transform:translate(-105px,-465px)}5%{transform:translate(-215px,-535px)}6%{transform:translate(-255px,-535px)}7%{transform:translate(-255px,-775px)}8%{transform:translate(-565px,-775px)}9%{transform:translate(-255px,-775px)}10%{transform:translate(-255px,-740px)}11%{transform:translate(-565px,-740px)}12%{transform:translate(-255px,-740px)}13%{transform:translate(-255px,-705px)}14%{transform:translate(-565px,-705px)}15%{transform:translate(-255px,-705px)}16%{transform:translate(-255px,-535px)}17%{transform:translate(-215px,-535px)}18%{transform:translate(-105px,-465px)}19%{transform:translate(-65px,-265px)}21%{transform:translate(0,0)}21.278%{transform:translate(0,0)}23%{transform:translate(-85px,-165px)}24%{transform:translate(-165px,-215px)}25.5%{transform:translate(-205px,-235px)}27%{transform:translate(-585px,-235px)}28.5%{transform:translate(-585px,185px)}30%{transform:translate(-225px,185px)}31.5%{transform:translate(-225px,135px)}33%{transform:translate(-585px,135px)}34.5%{transform:translate(-585px,75px)}36%{transform:translate(-225px,75px)}38%{transform:translate(-225px,-215px)}40%{transform:translate(-205px,-235px)}42.5%{transform:translate(-165px,-215px)}44%{transform:translate(-85px,-165px)}46.5%{transform:translate(0,0)}46.778%{transform:translate(0,0)}48%{transform:translate(-35px,-105px)}49%{transform:translate(75px,-215px)}50%{transform:translate(215px,-245px)}51.5%{transform:translate(215px,-185px)}53%{transform:translate(75px,-185px)}54.5%{transform:translate(75px,-245px)}55.3%{transform:translate(-35px,-105px)}56%{transform:translate(0,0)}58%{transform:translate(0,0)}58.278%{transform:translate(0,0)}60%{transform:translate(-35px,-105px)}61.5%{transform:translate(-85px,-105px)}63%{transform:translate(-85px,-365px)}64.5%{transform:translate(-35px,-365px)}66%{transform:translate(-35px,-105px)}67%{transform:translate(0,0)}69%{transform:translate(0,0)}69.278%{transform:translate(0,0)}71%{transform:translate(35px,-35px)}73%{transform:translate(165px,-35px)}75%{transform:translate(165px,85px)}77%{transform:translate(35px,85px)}79%{transform:translate(35px,165px)}81%{transform:translate(165px,165px)}83%{transform:translate(165px,85px)}85%{transform:translate(35px,85px)}87%{transform:translate(35px,-35px)}90%{transform:translate(0,0)}94%{transform:translate(0,0)}94.278%{transform:translate(0,0)}100%{transform:translate(0,0)}}
 #floor-2 .vacuum-route-line{display:none!important}
 #floor-2 .vacuum-route-line.is-cleaning{opacity:.34;animation:route-dash 2.2s linear infinite}
 @keyframes route-dash{to{stroke-dashoffset:-48}}
