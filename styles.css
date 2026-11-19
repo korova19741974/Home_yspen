@@ -40,3 +40,10 @@ button { cursor:pointer; }
 #floor-2 .equipment-marker:focus circle{stroke-width:3}
 #floor-2 .sensor-marker:focus circle{stroke:#70bcff}
 #floor-2 .vacuum-marker:focus circle{stroke:#64d7ad}
+#floor-2 .tv-marker circle{fill:#29213d;stroke:#c59cff}
+#floor-2 .tv-marker:hover circle,#floor-2 .tv-marker:focus circle{stroke:#e3ceff}
+.tv-control-row{gap:6px}.tv-control-row .device-action{white-space:nowrap;padding-left:7px;padding-right:7px}
+#floor-2 .temperature-readout{pointer-events:none}
+#floor-2 .temperature-readout rect{fill:#111a2ae8;stroke:#70bcff;stroke-width:2;filter:drop-shadow(0 4px 8px #0009)}
+#floor-2 .temperature-readout-title{fill:#8fc9ff;font-size:12px;font-weight:800;letter-spacing:1.4px}
+#floor-2 .temperature-readout-value{fill:#f4f7ff;font-size:16px;font-weight:750}

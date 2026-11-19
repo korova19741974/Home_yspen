@@ -175,6 +175,7 @@ const rooms = {
         name: "Основной свет у шкафа",
         kind: "light",
       },
+      { id: "f2-tv", icon: "▣", name: "Телевизор", kind: "tv" },
       { id: "f2-aircon", icon: "❄", name: "Кондиционер", kind: "climate" },
     ],
   },
@@ -203,7 +204,7 @@ const rooms = {
       {
         id: "f2-temperature",
         icon: "⌁",
-        name: "Температура · 22.8°",
+        name: "Температура в комнате и на улице",
         kind: "sensor",
       },
     ],
@@ -226,6 +227,7 @@ const defaults = {
     "f2-laundry-light": false,
     "f2-guest-accent": false,
     "f2-aircon": false,
+    "f2-tv": false,
     "f2-guest-wardrobe": false,
     "f2-bath-main": false,
     "f2-bath-mirror": false,
@@ -239,15 +241,18 @@ const defaults = {
       state: "На базе",
       battery: 100,
       mode: "Стандарт",
+      cleaning: "Сухая уборка",
       route: "Вся карта",
     },
     "vacuum-2": {
       state: "На базе",
       battery: 82,
       mode: "Стандарт",
+      cleaning: "Сухая уборка",
       route: "Вся карта",
     },
   },
+  tvTimers: { "f2-tv": null },
 };
 let state =
   JSON.parse(localStorage.getItem("home-dashboard-demo")) ||
@@ -256,6 +261,7 @@ state.devices = { ...defaults.devices, ...state.devices };
 Object.keys(defaults.vacuums).forEach((id) => {
   state.vacuums[id] = { ...defaults.vacuums[id], ...state.vacuums[id] };
 });
+state.tvTimers = { ...defaults.tvTimers, ...(state.tvTimers || {}) };
 let activeFloor = 2;
 let selectedRoom = "f2-guest";
 const secondFloorLightIds = [
@@ -292,6 +298,7 @@ const roomPanel = document.querySelector("#room-panel"),
   vacuumModal = document.querySelector("#vacuum-modal"),
   cameraModal = document.querySelector("#camera-modal"),
   DEMO_PIN = "[removed]";
+let tvTimerHandle = null;
 function save() {
   localStorage.setItem("home-dashboard-demo", JSON.stringify(state));
 }
@@ -319,14 +326,55 @@ function displayVacuum(id) {
   const v = state.vacuums[id];
   return `${v.state} · ${v.battery}%`;
 }
+function tvTimerText() {
+  const offAt = state.tvTimers["f2-tv"];
+  if (!offAt) return "";
+  const remaining = Math.max(0, offAt - Date.now());
+  return remaining ? ` · таймер ${Math.ceil(remaining / 60000)} мин` : "";
+}
+function syncTvTimer() {
+  clearTimeout(tvTimerHandle);
+  const offAt = state.tvTimers["f2-tv"];
+  if (!offAt) return;
+  const remaining = offAt - Date.now();
+  if (remaining <= 0) {
+    state.devices["f2-tv"] = false;
+    state.tvTimers["f2-tv"] = null;
+    save();
+    return;
+  }
+  tvTimerHandle = setTimeout(() => {
+    state.devices["f2-tv"] = false;
+    state.tvTimers["f2-tv"] = null;
+    save();
+    render();
+    showToast("Телевизор второго этажа выключен по таймеру");
+  }, remaining);
+}
+function toggleTv() {
+  state.devices["f2-tv"] = !isOn("f2-tv");
+  if (!state.devices["f2-tv"]) state.tvTimers["f2-tv"] = null;
+  save();
+  render();
+  showToast(`Телевизор: ${isOn("f2-tv") ? "включён" : "выключен"}`);
+}
+function setTvTimer(minutes = 30) {
+  state.devices["f2-tv"] = true;
+  state.tvTimers["f2-tv"] = Date.now() + minutes * 60 * 1000;
+  save();
+  render();
+  showToast(`Телевизор выключится через ${minutes} минут`);
+}
 function renderRoomPanel() {
   const room = rooms[selectedRoom];
   const items = room.devices
     .map((d) => {
       if (d.kind === "sensor")
-        return `<div class="control-row"><span class="control-icon">${d.icon}</span><span class="control-copy"><strong>${d.name}</strong><small>${d.id === "f2-leak" ? "Сухо · Zigbee" : "Zigbee · данные в демо"}</small></span></div>`;
+        return `<div class="control-row"><span class="control-icon">${d.icon}</span><span class="control-copy"><strong>${d.name}</strong><small>${d.id === "f2-leak" ? "Сухо · Zigbee" : "22.8° в комнате · 8.4° на улице"}</small></span></div>`;
       if (d.kind === "vacuum")
-        return `<div class="control-row"><span class="control-icon">${d.icon}</span><span class="control-copy"><strong>${d.name}</strong><small>${displayVacuum(d.id)} · ${state.vacuums[d.id].mode}</small></span><button class="device-action" data-vacuum-settings="${d.id}">Настроить</button></div>`;
+        return `<div class="control-row"><span class="control-icon">${d.icon}</span><span class="control-copy"><strong>${d.name}</strong><small>${displayVacuum(d.id)} · ${state.vacuums[d.id].cleaning}</small></span><button class="device-action" data-vacuum-settings="${d.id}">Настроить</button></div>`;
+      if (d.kind === "tv")
+        return `<div class="control-row tv-control-row"><span class="control-icon">${d.icon}</span><span class="control-copy"><strong>${d.name}</strong><small>${isOn(d.id) ? "Включён" : "Выключен"}${tvTimerText()} · демо</small></span><button class="toggle ${isOn(d.id) ? "on" : ""}" data-tv-toggle="${d.id}" aria-label="Включить или выключить телевизор"><span></span></button><button class="device-action" data-tv-timer="30">Через 30 мин</button></div>`;
       if (d.kind === "speaker")
         return `<div class="control-row"><span class="control-icon">${d.icon}</span><span class="control-copy"><strong>${d.name}</strong><small>Яндекс Музыка · тестовый режим</small></span><button class="device-action" data-music="${d.id}">Играть</button></div>`;
       if (d.kind === "camera")
@@ -396,6 +444,7 @@ function renderSummary() {
     displayVacuum("vacuum-2");
 }
 function render() {
+  syncTvTimer();
   renderMap();
   renderRoomPanel();
   renderSummary();
@@ -417,7 +466,7 @@ function setVacuum(id, action = "toggle") {
 function openVacuumSettings(id) {
   const v = state.vacuums[id],
     name = id === "vacuum-1" ? "Xiaomi M40 · 1 этаж" : "Xiaomi M40 · 2 этаж";
-  vacuumModal.innerHTML = `<div class="modal-content"><div class="modal-top"><div><p class="eyebrow">НАСТРОЙКИ УБОРКИ</p><h2>${name}</h2><p>${displayVacuum(id)} · ${v.route}</p></div><button class="modal-close" data-close-modal="vacuum-modal">×</button></div><div class="setting-group"><strong>Режим мощности</strong><div class="mode-options">${["Тихий", "Стандарт", "Турбо", "Макс"].map((x) => `<button class="mode-pill ${v.mode === x ? "active" : ""}" data-vacuum-mode="${x}" data-vacuum-id="${id}">${x}</button>`).join("")}</div></div><div class="setting-group"><strong>Маршрут уборки</strong><div class="mode-options">${["Вся карта", "По комнатам", "Точечная"].map((x) => `<button class="mode-pill ${v.route === x ? "active" : ""}" data-vacuum-route="${x}" data-vacuum-id="${id}">${x}</button>`).join("")}</div></div><div class="modal-actions"><button class="modal-secondary" data-vacuum-home="${id}">На базу</button><button class="modal-primary" data-vacuum-start="${id}">${v.state === "Убирает" ? "Пауза" : "Начать уборку"}</button></div></div>`;
+  vacuumModal.innerHTML = `<div class="modal-content"><div class="modal-top"><div><p class="eyebrow">НАСТРОЙКИ УБОРКИ</p><h2>${name}</h2><p>${displayVacuum(id)} · ${v.route}</p></div><button class="modal-close" data-close-modal="vacuum-modal">×</button></div><div class="setting-group"><strong>Тип уборки</strong><div class="mode-options">${["Сухая уборка", "Влажная", "Комбо"].map((x) => `<button class="mode-pill ${v.cleaning === x ? "active" : ""}" data-vacuum-cleaning="${x}" data-vacuum-id="${id}">${x}</button>`).join("")}</div></div><div class="setting-group"><strong>Режим мощности</strong><div class="mode-options">${["Тихий", "Стандарт", "Турбо", "Макс"].map((x) => `<button class="mode-pill ${v.mode === x ? "active" : ""}" data-vacuum-mode="${x}" data-vacuum-id="${id}">${x}</button>`).join("")}</div></div><div class="setting-group"><strong>Маршрут уборки</strong><div class="mode-options">${["Вся карта", "По комнатам", "Точечная"].map((x) => `<button class="mode-pill ${v.route === x ? "active" : ""}" data-vacuum-route="${x}" data-vacuum-id="${id}">${x}</button>`).join("")}</div></div><div class="modal-actions"><button class="modal-secondary" data-vacuum-home="${id}">На базу</button><button class="modal-primary" data-vacuum-start="${id}">${v.state === "Убирает" ? "Пауза" : "Начать уборку"}</button></div></div>`;
   vacuumModal.showModal();
 }
 function openCamera(type) {
@@ -432,6 +481,7 @@ function openCamera(type) {
 function runScene(scene) {
   if (scene === "night" || scene === "away") {
     Object.keys(state.devices).forEach((id) => (state.devices[id] = false));
+    state.tvTimers["f2-tv"] = null;
     if (scene === "away")
       Object.values(state.vacuums).forEach((v) => {
         if (v.state === "Убирает") v.state = "На паузе";
@@ -461,12 +511,14 @@ function setLightPreset(preset) {
 }
 vacuumModal.addEventListener("click", (e) => {
   const mode = e.target.closest("[data-vacuum-mode]"),
+    cleaning = e.target.closest("[data-vacuum-cleaning]"),
     route = e.target.closest("[data-vacuum-route]"),
     home = e.target.closest("[data-vacuum-home]"),
     start = e.target.closest("[data-vacuum-start]");
-  if (mode || route) {
-    const id = (mode || route).dataset.vacuumId;
+  if (mode || cleaning || route) {
+    const id = (mode || cleaning || route).dataset.vacuumId;
     if (mode) state.vacuums[id].mode = mode.dataset.vacuumMode;
+    else if (cleaning) state.vacuums[id].cleaning = cleaning.dataset.vacuumCleaning;
     else state.vacuums[id].route = route.dataset.vacuumRoute;
     save();
     render();
@@ -483,6 +535,10 @@ vacuumModal.addEventListener("click", (e) => {
   }
 });
 document.addEventListener("click", (e) => {
+  const tvToggle = e.target.closest("[data-tv-toggle]");
+  if (tvToggle) return toggleTv();
+  const tvTimer = e.target.closest("[data-tv-timer]");
+  if (tvTimer) return setTvTimer(Number(tvTimer.dataset.tvTimer) || 30);
   const room = e.target.closest(".floor-room");
   if (room) {
     selectedRoom = room.dataset.room;
@@ -553,9 +609,15 @@ document.addEventListener("click", (e) => {
 });
 document.addEventListener("click", (e) => {
   const mapLight = e.target.closest("[data-map-toggle]"),
-    mapVacuum = e.target.closest("[data-map-vacuum]");
+    mapVacuum = e.target.closest("[data-map-vacuum]"),
+    roomSelect = e.target.closest("[data-room-select]");
   if (mapLight) toggleMapLight(mapLight.dataset.mapToggle);
   if (mapVacuum) openVacuumSettings(mapVacuum.dataset.mapVacuum);
+  if (roomSelect) {
+    selectedRoom = roomSelect.dataset.roomSelect;
+    activeFloor = 2;
+    render();
+  }
 });
 document.addEventListener("click", (e) => {
   const preset = e.target.closest("[data-light-preset]");
@@ -564,7 +626,7 @@ document.addEventListener("click", (e) => {
 document.addEventListener("keydown", (e) => {
   if (e.key !== "Enter" && e.key !== " ") return;
   const control = e.target.closest(
-    ".photo-room,[data-map-toggle],[data-map-vacuum]",
+    ".photo-room,[data-map-toggle],[data-map-vacuum],[data-room-select]",
   );
   if (!control) return;
   e.preventDefault();

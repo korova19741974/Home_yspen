@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#0b1020" />
     <meta name="description" content="Личная панель управления умным домом" />
     <link rel="manifest" href="./manifest.webmanifest" />
-    <link rel="stylesheet" href="./styles.css?v=9" />
+    <link rel="stylesheet" href="./styles.css?v=10" />
     <title>Мой дом</title>
   </head>
   <body>
@@ -199,9 +199,15 @@
                 </g>
                 <g class="equipment-markers">
                   <g class="equipment-marker" data-map-toggle="f2-aircon" data-device-state="f2-aircon" tabindex="0" role="button" aria-label="Кондиционер спальни"><circle cx="72" cy="505" r="22"/><text x="72" y="512">❄</text><title>Кондиционер</title></g>
+                  <g class="equipment-marker tv-marker" data-room-select="f2-guest" tabindex="0" role="button" aria-label="Телевизор в главной спальне"><circle cx="95" cy="790" r="22"/><text x="95" y="797">▣</text><title>Телевизор</title></g>
                   <g id="vacuum-2-marker" class="equipment-marker vacuum-marker" data-map-vacuum="vacuum-2" tabindex="0" role="button" aria-label="Робот-пылесос второго этажа"><circle cx="640" cy="865" r="24"/><text x="640" y="873">✦</text><title>Робот-пылесос</title></g>
                   <g class="equipment-marker sensor-marker" tabindex="0" aria-label="Датчик протечки: сухо"><circle cx="1030" cy="625" r="20"/><text x="1030" y="632">◈</text><title>Датчик протечки: сухо</title></g>
                   <g class="equipment-marker sensor-marker" tabindex="0" aria-label="Датчик температуры: 22.8 градуса"><circle cx="1030" cy="890" r="20"/><text x="1030" y="897">⌁</text><title>Температура: 22.8°</title></g>
+                </g>
+                <g class="temperature-readout" aria-label="Температура у окна кабинета">
+                  <rect x="840" y="1030" width="275" height="72" rx="12"/>
+                  <text class="temperature-readout-title" x="858" y="1052">У ОКНА · КАБИНЕТ</text>
+                  <text class="temperature-readout-value" x="858" y="1078">В комнате 22.8°  ·  Улица 8.4°</text>
                 </g>
               </svg>
               <div class="map-legend"><span><i class="legend-light"></i>Свет</span><span><i class="legend-vacuum"></i>Пылесос</span><span><i class="legend-sensor"></i>Датчик</span></div>
@@ -225,6 +231,6 @@
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <dialog class="settings-modal" id="vacuum-modal"></dialog>
     <dialog class="settings-modal" id="camera-modal"></dialog>
-    <script src="./app.js?v=9"></script>
+    <script src="./app.js?v=10"></script>
   </body>
 </html>
