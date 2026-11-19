@@ -291,13 +291,8 @@ const lightPresets = {
 };
 const roomPanel = document.querySelector("#room-panel"),
   toast = document.querySelector("#toast"),
-  demoGate = document.querySelector("#demo-gate"),
-  pinForm = document.querySelector("#pin-form"),
-  pinInput = document.querySelector("#pin-input"),
-  pinMessage = document.querySelector("#pin-message"),
   vacuumModal = document.querySelector("#vacuum-modal"),
-  cameraModal = document.querySelector("#camera-modal"),
-  DEMO_PIN = "[removed]";
+  cameraModal = document.querySelector("#camera-modal");
 let tvTimerHandle = null;
 function save() {
   localStorage.setItem("home-dashboard-demo", JSON.stringify(state));
@@ -634,23 +629,6 @@ document.addEventListener("keydown", (e) => {
   e.preventDefault();
   control.click();
 });
-pinInput.addEventListener("input", () => {
-  pinInput.value = pinInput.value.replace(/\D/g, "").slice(0, 4);
-  pinMessage.textContent = "";
-});
-pinForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  if (pinInput.value === DEMO_PIN) {
-    sessionStorage.setItem("home-dashboard-demo-access", "granted");
-    demoGate.classList.add("unlocked");
-    showToast("Демо-панель открыта");
-  } else {
-    pinMessage.textContent = "Неверный код. Попробуйте ещё раз.";
-    pinInput.select();
-  }
-});
-if (sessionStorage.getItem("home-dashboard-demo-access") === "granted")
-  demoGate.classList.add("unlocked");
 if ("serviceWorker" in navigator)
-  navigator.serviceWorker.register("./service-worker.js").catch(() => {});
+  navigator.serviceWorker.register("./service-worker.js?v=12").catch(() => {});
 render();
